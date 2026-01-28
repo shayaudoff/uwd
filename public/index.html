@@ -3,9 +3,13 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Udoff Web Development</title>
-  <link rel="stylesheet" href="/assets/css/global.css" />
-  <link rel="stylesheet" href="/style.css" />
+  <title>Udoff Web Development - Custom Sites Built Clean, Fast, and Correctly</title>
+  <meta name="description" content="Design + development for small businesses, professionals, and startups who need a web presence that actually works.">
+  <link rel="stylesheet" href="assets/css/global.css" />
+  <link rel="stylesheet" href="style.css" />
+  <script>
+    document.documentElement.classList.add('js');
+  </script>
 </head>
 <body>
   <header class="site-header">
@@ -21,16 +25,174 @@
     </div>
   </header>
 
-  <main class="container" style="padding:24px 0;">
-    <section class="card">
-      <h2 style="margin-top:0;">Custom sites built clean, fast, and correctly.</h2>
-      <p style="color:var(--muted);">
-        Design + development for small businesses, professionals, and startups.
-      </p>
-      <a class="btn" href="/contact/">Start a project</a>
+  <main>
+    <!-- Hero Section -->
+    <section class="hero">
+      <div class="container">
+        <div class="hero-content">
+          <div class="hero-badge">Web Development Done Right</div>
+          <h2 class="hero-title">
+            Custom sites built<br/>
+            <span class="gradient-text">clean, fast, and correctly</span>
+          </h2>
+          <p class="hero-subtitle">
+            Design + development for small businesses, professionals, and startups who need a web presence that actually works.
+          </p>
+          <div class="hero-cta">
+            <a class="btn btn-primary" href="/contact/">Start a Project</a>
+            <a class="btn btn-secondary" href="/work/">View Our Work</a>
+          </div>
+        </div>
+        <div class="hero-visual">
+          <div class="floating-card card-1"></div>
+          <div class="floating-card card-2"></div>
+          <div class="floating-card card-3"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Services Grid -->
+    <section class="services-section">
+      <div class="container">
+        <div class="section-header">
+          <h2>What We Do</h2>
+          <p>Full-stack solutions for your web needs</p>
+        </div>
+        <div class="services-grid">
+          <a href="/services/web-design/" class="service-card">
+            <div class="service-icon">✦</div>
+            <h3>Web Design</h3>
+            <p>Beautiful, user-focused designs that convert visitors into customers.</p>
+            <span class="service-arrow">→</span>
+          </a>
+          <a href="/services/web-development/" class="service-card">
+            <div class="service-icon">⚡</div>
+            <h3>Web Development</h3>
+            <p>Clean, performant code built with modern technologies.</p>
+            <span class="service-arrow">→</span>
+          </a>
+          <a href="/services/seo-performance/" class="service-card">
+            <div class="service-icon">📈</div>
+            <h3>SEO & Performance</h3>
+            <p>Get found on Google and load instantly on any device.</p>
+            <span class="service-arrow">→</span>
+          </a>
+          <a href="/services/maintenance-support/" class="service-card">
+            <div class="service-icon">🛠</div>
+            <h3>Maintenance & Support</h3>
+            <p>Ongoing care to keep your site secure, fast, and up-to-date.</p>
+            <span class="service-arrow">→</span>
+          </a>
+          <a href="/services/consulting-audits/" class="service-card">
+            <div class="service-icon">🔍</div>
+            <h3>Consulting & Audits</h3>
+            <p>Expert analysis and recommendations for existing sites.</p>
+            <span class="service-arrow">→</span>
+          </a>
+          <a href="/services/" class="service-card service-card-all">
+            <div class="service-icon">➜</div>
+            <h3>View All Services</h3>
+            <p>Explore our complete range of offerings.</p>
+            <span class="service-arrow">→</span>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Process Preview -->
+    <section class="process-preview">
+      <div class="container">
+        <div class="process-content">
+          <h2>Our Process</h2>
+          <p class="process-subtitle">From idea to launch, we make it simple</p>
+          <div class="process-steps">
+            <div class="process-step">
+              <div class="step-number">01</div>
+              <h4>Discovery</h4>
+              <p>We learn about your business, goals, and audience.</p>
+            </div>
+            <div class="process-step">
+              <div class="step-number">02</div>
+              <h4>Design</h4>
+              <p>We create mockups and iterate until it's perfect.</p>
+            </div>
+            <div class="process-step">
+              <div class="step-number">03</div>
+              <h4>Development</h4>
+              <p>We build your site with clean, maintainable code.</p>
+            </div>
+            <div class="process-step">
+              <div class="step-number">04</div>
+              <h4>Launch</h4>
+              <p>We deploy, test, and hand off with full training.</p>
+            </div>
+          </div>
+          <a class="btn btn-secondary" href="/process/">See Full Process</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta-section">
+      <div class="container">
+        <div class="cta-card">
+          <h2>Ready to build something great?</h2>
+          <p>Let's talk about your project. No pressure, just possibilities.</p>
+          <div class="cta-buttons">
+            <a class="btn btn-primary" href="/contact/">Get in Touch</a>
+            <a class="btn btn-secondary" href="/pricing/">View Pricing</a>
+          </div>
+        </div>
+      </div>
     </section>
   </main>
 
-  <script src="/assets/js/main.js"></script>
+  <!-- Footer -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-col">
+          <h3>Udoff Web Development</h3>
+          <p>Building the web, one site at a time.</p>
+        </div>
+        <div class="footer-col">
+          <h4>Services</h4>
+          <ul>
+            <li><a href="/services/web-design/">Web Design</a></li>
+            <li><a href="/services/web-development/">Web Development</a></li>
+            <li><a href="/services/seo-performance/">SEO & Performance</a></li>
+            <li><a href="/services/maintenance-support/">Maintenance</a></li>
+            <li><a href="/services/consulting-audits/">Consulting</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Company</h4>
+          <ul>
+            <li><a href="/about/">About</a></li>
+            <li><a href="/work/">Work</a></li>
+            <li><a href="/process/">Process</a></li>
+            <li><a href="/pricing/">Pricing</a></li>
+            <li><a href="/faq/">FAQ</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Legal</h4>
+          <ul>
+            <li><a href="/privacy/">Privacy Policy</a></li>
+            <li><a href="/terms/">Terms of Service</a></li>
+          </ul>
+          <h4 style="margin-top:24px;">Connect</h4>
+          <ul>
+            <li><a href="/contact/">Contact</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2026 Udoff Web Development. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="assets/js/main.js"></script>
 </body>
 </html>
