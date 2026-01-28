@@ -1,3 +1,1 @@
-document.getElementById("testBtn")?.addEventListener("click", () => {
-  alert("JS is wired ✅");
-});
+console.log("UWD site loaded");
