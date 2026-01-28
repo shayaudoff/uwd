@@ -1,14 +1,19 @@
-// Parallax scroll effect for floating cards
-window.addEventListener('scroll', () => {
-  const scrolled = window.pageYOffset;
-  const parallaxElements = document.querySelectorAll('.floating-card');
-  
-  parallaxElements.forEach((el, index) => {
-    const speed = 0.3 + (index * 0.1);
-    const direction = index % 2 === 0 ? 1 : -1;
-    el.style.transform = `translateY(${scrolled * speed * direction}px) rotate(${scrolled * 0.02}deg)`;
+const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+const isSmallScreen = window.matchMedia('(max-width: 768px)').matches;
+const enableParallax = !prefersReducedMotion && !isSmallScreen;
+
+if (enableParallax) {
+  window.addEventListener('scroll', () => {
+    const scrolled = window.pageYOffset;
+    const parallaxElements = document.querySelectorAll('.floating-card');
+
+    parallaxElements.forEach((el, index) => {
+      const speed = 0.3 + (index * 0.1);
+      const direction = index % 2 === 0 ? 1 : -1;
+      el.style.transform = `translateY(${scrolled * speed * direction}px) rotate(${scrolled * 0.02}deg)`;
+    });
   });
-});
+}
 
 // Intersection Observer for fade-in animations
 const observerOptions = {
@@ -16,32 +21,79 @@ const observerOptions = {
   rootMargin: '0px 0px -50px 0px'
 };
 
-const observer = new IntersectionObserver((entries) => {
-  entries.forEach(entry => {
-    if (entry.isIntersecting) {
-      entry.target.classList.add('visible');
-    }
-  });
-}, observerOptions);
+const observer = ('IntersectionObserver' in window && !prefersReducedMotion)
+  ? new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+      }
+    });
+  }, observerOptions)
+  : null;
 
 // Initialize on DOM load
 document.addEventListener('DOMContentLoaded', () => {
+  const navToggle = document.querySelector('.nav-toggle');
+  const nav = document.querySelector('.nav');
+  const header = document.querySelector('.site-header');
+
+  if (navToggle && nav && header) {
+    const closeNav = () => {
+      nav.classList.remove('is-open');
+      header.classList.remove('nav-open');
+      navToggle.setAttribute('aria-expanded', 'false');
+      navToggle.textContent = 'Menu';
+    };
+
+    navToggle.addEventListener('click', () => {
+      const isOpen = nav.classList.toggle('is-open');
+      header.classList.toggle('nav-open', isOpen);
+      navToggle.setAttribute('aria-expanded', String(isOpen));
+      navToggle.textContent = isOpen ? 'Close' : 'Menu';
+    });
+
+    nav.addEventListener('click', (event) => {
+      if (event.target && event.target.tagName === 'A') {
+        closeNav();
+      }
+    });
+
+    const mediaQuery = window.matchMedia('(min-width: 769px)');
+    mediaQuery.addEventListener('change', (event) => {
+      if (event.matches) {
+        closeNav();
+      }
+    });
+  }
+
   // Observe main sections
   const sections = document.querySelectorAll('.hero, .services-section, .process-preview, .cta-section');
-  sections.forEach(section => observer.observe(section));
+  if (observer) {
+    sections.forEach(section => observer.observe(section));
+  } else {
+    sections.forEach(section => section.classList.add('visible'));
+  }
   
   // Observe service cards with stagger
   const serviceCards = document.querySelectorAll('.service-card');
   serviceCards.forEach((card, index) => {
     card.style.transitionDelay = `${index * 0.1}s`;
-    observer.observe(card);
+    if (observer) {
+      observer.observe(card);
+    } else {
+      card.classList.add('visible');
+    }
   });
   
   // Observe process steps
   const processSteps = document.querySelectorAll('.process-step');
   processSteps.forEach((step, index) => {
     step.style.transitionDelay = `${index * 0.15}s`;
-    observer.observe(step);
+    if (observer) {
+      observer.observe(step);
+    } else {
+      step.classList.add('visible');
+    }
   });
 });
 
