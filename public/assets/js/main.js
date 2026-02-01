@@ -1,15 +1,21 @@
 const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-const isSmallScreen = window.matchMedia('(max-width: 768px)').matches;
-const enableParallax = !prefersReducedMotion && !isSmallScreen;
 
-if (enableParallax) {
+if (!prefersReducedMotion) {
   window.addEventListener('scroll', () => {
     const scrolled = window.pageYOffset;
+    const isMobile = window.innerWidth <= 768;
     const parallaxElements = document.querySelectorAll('.floating-card');
 
     parallaxElements.forEach((el, index) => {
-      const speed = 0.3 + (index * 0.1);
       const direction = index % 2 === 0 ? 1 : -1;
+
+      if (isMobile) {
+        const speed = 0.15 + (index * 0.05);
+        el.style.transform = `translateY(${scrolled * speed * direction}px)`;
+        return;
+      }
+
+      const speed = 0.3 + (index * 0.1);
       el.style.transform = `translateY(${scrolled * speed * direction}px) rotate(${scrolled * 0.02}deg)`;
     });
   });

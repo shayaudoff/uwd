@@ -320,6 +320,7 @@
 @media(max-width:768px){
   .hero{
     padding:60px 0 80px;
+    overflow:hidden;
   }
   
   .hero .container{
@@ -328,7 +329,33 @@
   }
   
   .hero-visual{
-    height:280px;
+    height:260px;
+    margin-left:auto;
+    margin-right:auto;
+    width:100%;
+    max-width:360px;
+  }
+
+  .card-1{
+    width:160px;
+    height:130px;
+    top:10px;
+    left:20px;
+  }
+
+  .card-2{
+    width:150px;
+    height:120px;
+    top:70px;
+    right:auto;
+    left:140px;
+  }
+
+  .card-3{
+    width:140px;
+    height:110px;
+    bottom:20px;
+    left:60px;
   }
   
   .hero-title{
@@ -357,55 +384,8 @@
   
   .cta-buttons{
     flex-direction:column;
+    align-items:center;
   }
-
-  .floating-card{
-    left:50%;
-    right:auto;
-    transform:translateX(-50%);
-  }
-
-  .card-1{
-    width:clamp(120px, 32vw, 140px);
-    height:clamp(98px, 26vw, 115px);
-    top:6px;
-    transform:translateX(calc(-50% - clamp(22px, 6vw, 34px)));
-    animation:floatMobileLeft 6s ease-in-out infinite;
-  }
-
-  .card-2{
-    width:clamp(112px, 30vw, 130px);
-    height:clamp(92px, 24vw, 105px);
-    top:72px;
-    left:50%;
-    right:auto;
-    transform:translateX(-50%);
-    animation:floatMobileCenter 7s ease-in-out infinite 0.5s;
-  }
-
-  .card-3{
-    width:clamp(104px, 28vw, 120px);
-    height:clamp(84px, 22vw, 95px);
-    bottom:16px;
-    left:50%;
-    transform:translateX(calc(-50% + clamp(22px, 6vw, 34px)));
-    animation:floatMobileRight 8s ease-in-out infinite 1s;
-  }
-}
-
-@keyframes floatMobileLeft{
-  0%, 100%{transform:translateX(calc(-50% - clamp(22px, 6vw, 34px))) translateY(0px)}
-  50%{transform:translateX(calc(-50% - clamp(22px, 6vw, 34px))) translateY(-14px)}
-}
-
-@keyframes floatMobileCenter{
-  0%, 100%{transform:translateX(-50%) translateY(0px)}
-  50%{transform:translateX(-50%) translateY(-12px)}
-}
-
-@keyframes floatMobileRight{
-  0%, 100%{transform:translateX(calc(-50% + clamp(22px, 6vw, 34px))) translateY(0px)}
-  50%{transform:translateX(calc(-50% + clamp(22px, 6vw, 34px))) translateY(-16px)}
 }
 
 @media(max-width:480px){
