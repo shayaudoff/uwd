@@ -22,6 +22,11 @@ let selectedBudget   = '';
 let selectedTimeline = '';
 let selectedStyle    = '';
 let isSubmitting     = false;
+const TIER_LABELS = {
+  micro: 'Quick Fix / Micro',
+  website: 'Website Build',
+  platform: 'Platform / App'
+};
 
 // ============================================================
 // DOM READY
@@ -446,13 +451,13 @@ async function handleSubmit(e) {
 
   // 2. honeypot
   if ((document.getElementById('pr_hp')?.value || '').trim() !== '') {
-    setSubmitStatus('Request sent ✅', 'success');
+    setSubmitStatus('Unable to submit.', 'error');
     return;
   }
 
   // 3. time gate
   if ((Date.now() - pageLoadedAt) / 1000 < MIN_FILL_SECONDS) {
-    setSubmitStatus('Request sent ✅', 'success');
+    setSubmitStatus('Please take a few seconds to complete the form, then submit again.', 'error');
     return;
   }
 
@@ -475,7 +480,12 @@ async function handleSubmit(e) {
     if (selectedTier === 'micro') {
       services = ['micro', microType].filter(Boolean);
     } else if (selectedTier === 'website') {
-      services = ['website', siteType, pages, cms].filter(Boolean);
+      services = [
+        'website',
+        siteType ? `siteType:${siteType}` : '',
+        pages ? `pages:${pages}` : '',
+        cms ? `cms:${cms}` : ''
+      ].filter(Boolean);
     } else if (selectedTier === 'platform') {
       services = features.length ? features : ['platform'];
     }
@@ -483,9 +493,45 @@ async function handleSubmit(e) {
     const listOrDefault = (items) => items.length ? items.join(', ') : 'Not provided';
     const checkedValue = (group) => (formData.get(group) || '').toString().trim() || 'Not provided';
     const checkedList = (group) => formData.getAll(group).map(v => String(v).trim()).filter(Boolean);
+    const selectedOptionText = (() => {
+      const activeBtn = document.querySelector('.pr-type-btn.active');
+      if (activeBtn && activeBtn.textContent) return activeBtn.textContent.trim();
+      const matched = document.querySelector(`.pr-type-btn[data-tier="${selectedTier}"]`);
+      return matched && matched.textContent ? matched.textContent.trim() : 'Not provided';
+    })();
+    const tierLabel = TIER_LABELS[selectedTier] || selectedTier || 'Not provided';
+    const tierHeader = `Tier: ${tierLabel}${selectedTier ? ` (${selectedTier})` : ''}`;
+
+    const selectedTierDetails = (() => {
+      if (selectedTier === 'micro') {
+        return [
+          '[Selected Tier Details: Micro]',
+          `Service Type: ${microType || 'Not provided'}`,
+          `Task Description: ${(formData.get('microDesc') || '').toString().trim() || 'Not provided'}`,
+          `Relevant URL: ${(formData.get('microUrl') || '').toString().trim() || 'Not provided'}`
+        ];
+      }
+      if (selectedTier === 'website') {
+        return [
+          '[Selected Tier Details: Website]',
+          `Website Type: ${siteType || 'Not provided'}`,
+          `Pages: ${pages || 'Not provided'}`,
+          `CMS: ${cms || 'Not provided'}`,
+          `Content Status: ${(formData.get('content') || '').toString().trim() || 'Not provided'}`,
+          `Brand Assets: ${checkedValue('brandAssets')}`
+        ];
+      }
+      return [
+        '[Selected Tier Details: Platform]',
+        `Product Type: ${(formData.get('prodType') || '').toString().trim() || 'Not provided'}`,
+        `Features: ${listOrDefault(features)}`,
+        `Compliance: ${listOrDefault(checkedList('compliance'))}`
+      ];
+    })();
 
     const details = [
-      `Tier: ${selectedTier || 'Not provided'}`,
+      tierHeader,
+      `Selected option text: ${selectedOptionText}`,
       '',
       `Name: ${name || 'Not provided'}`,
       `Email: ${email || 'Not provided'}`,
@@ -493,22 +539,7 @@ async function handleSubmit(e) {
       `Company: ${(formData.get('company') || '').toString().trim() || 'Not provided'}`,
       `Contact Method: ${checkedValue('contactMethod')}`,
       '',
-      '[Micro]',
-      `Service Type: ${microType || 'Not provided'}`,
-      `Task Description: ${(formData.get('microDesc') || '').toString().trim() || 'Not provided'}`,
-      `Relevant URL: ${(formData.get('microUrl') || '').toString().trim() || 'Not provided'}`,
-      '',
-      '[Website]',
-      `Website Type: ${siteType || 'Not provided'}`,
-      `Pages: ${pages || 'Not provided'}`,
-      `CMS: ${cms || 'Not provided'}`,
-      `Content Status: ${(formData.get('content') || '').toString().trim() || 'Not provided'}`,
-      `Brand Assets: ${checkedValue('brandAssets')}`,
-      '',
-      '[Platform]',
-      `Product Type: ${(formData.get('prodType') || '').toString().trim() || 'Not provided'}`,
-      `Features: ${listOrDefault(features)}`,
-      `Compliance: ${listOrDefault(checkedList('compliance'))}`,
+      ...selectedTierDetails,
       '',
       '[Design]',
       `Design Scope: ${checkedValue('designScope')}`,
