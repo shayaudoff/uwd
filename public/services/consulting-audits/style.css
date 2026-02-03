@@ -1,1 +1,11 @@
 /* Page-specific overrides only */
+
+.page-card {
+  max-width: 720px;
+}
+
+.coming-soon-joke {
+  margin-top: 0.75rem;
+  color: var(--muted-text-color, #5f6a7a);
+  font-style: italic;
+}
