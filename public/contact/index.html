@@ -4,6 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Contact | Udoff Web Development</title>
+  <meta name="description" content="Get in touch. Email is the fastest way to start a project. We respond to every inquiry.">
   <script>
     document.documentElement.classList.add('js');
   </script>
@@ -26,15 +27,149 @@
     </div>
   </header>
 
-  <main class="page">
-    <div class="container">
-      <section class="card page-card">
-        <h2 class="page-title">Contact</h2>
-        <p class="page-lead">
-        Starter page. Edit <code>contact/index.html</code> and <code>contact/style.css</code>.
-        </p>
-      </section>
-    </div>
+  <main>
+    <section class="ct-header">
+      <div class="container">
+        <h1 class="ct-title">Let's talk.</h1>
+        <p class="ct-subtitle">No forms of fluff required -- just tell us what you're working on.</p>
+      </div>
+    </section>
+
+    <section class="ct-body">
+      <div class="container">
+        <div class="ct-grid">
+          <aside class="ct-info ct-reveal">
+            <div class="ct-info-block ct-info-primary">
+              <span class="ct-info-label">Email</span>
+              <span class="ct-info-note">Preferred for all new projects</span>
+              <a href="mailto:info@shayaudoff.com" class="ct-info-email">info@shayaudoff.com</a>
+            </div>
+
+            <div class="ct-divider"></div>
+
+            <div class="ct-info-block ct-info-secondary">
+              <span class="ct-info-label">WhatsApp</span>
+              <span class="ct-info-note">Faster to reach us through Email</span>
+              <a href="https://wa.me/18452760867?text=Hi%20Shaya%20..." target="_blank" rel="noopener" class="ct-info-wa">
+                </svg>
+                +1 (845) 276-0867
+              </a>
+            </div>
+
+            <div class="ct-divider"></div>
+
+            <div class="ct-info-block">
+              <span class="ct-info-label">Response time</span>
+              <span class="ct-info-val">Within 24 hours</span>
+            </div>
+
+            <div class="ct-info-block">
+              <span class="ct-info-label">Based in</span>
+              <span class="ct-info-val">Remote</span>
+            </div>
+          </aside>
+
+          <div class="ct-form-wrap ct-reveal">
+            <div class="ct-panel ct-panel-success" id="panelSuccess" role="alert" aria-live="assertive">
+              <div class="ct-panel-icon">✓</div>
+              <h3>Message sent.</h3>
+              <p>We'll be in touch within 24 hours. If it's urgent, reply to the confirmation you'll receive at your email.</p>
+            </div>
+
+            <div class="ct-panel ct-panel-error" id="panelError" role="alert" aria-live="assertive">
+              <div class="ct-panel-icon">!</div>
+              <h3>Something went wrong.</h3>
+              <p>The message didn't go through. Try again, or email us directly at <a href="mailto:hello@udoffweb.com">hello@udoffweb.com</a>.</p>
+              <button class="btn btn-secondary ct-retry-btn" id="retryBtn" type="button">Try again</button>
+            </div>
+
+            <form class="ct-form" id="contactForm" novalidate>
+              <input type="text" name="hp_field" id="hp_field" autocomplete="off" tabindex="-1" aria-hidden="true" />
+
+              <div class="ct-row ct-row-2">
+                <div class="ct-field">
+                  <label for="fullName">Full name <span class="ct-req">*</span></label>
+                  <input type="text" id="fullName" name="fullName" autocomplete="name" placeholder="Larry Ellison" required />
+                  <span class="ct-error" id="err-fullName"></span>
+                </div>
+                <div class="ct-field">
+                  <label for="email">Email <span class="ct-req">*</span></label>
+                  <input type="email" id="email" name="email" autocomplete="email" placeholder="larry@oracle.com" required />
+                  <span class="ct-error" id="err-email"></span>
+                </div>
+              </div>
+
+              <div class="ct-row ct-row-2">
+                <div class="ct-field">
+                  <label for="phone">Phone <span class="ct-req">*</span></label>
+                  <input type="tel" id="phone" name="phone" autocomplete="tel" placeholder="+1 (800) 223-1711" required />
+                  <span class="ct-error" id="err-phone"></span>
+                </div>
+                <div class="ct-field">
+                  <label for="company">Company <span class="ct-opt">optional</span></label>
+                  <input type="text" id="company" name="company" autocomplete="organization" placeholder="Oracle Corp." />
+                </div>
+              </div>
+
+              <div class="ct-row ct-row-2">
+                <div class="ct-field">
+                  <label for="projectType">Project type <span class="ct-req">*</span></label>
+                  <select id="projectType" name="projectType" required>
+                    <option value="" disabled selected>Select a type</option>
+                    <option value="Website">Website</option>
+                    <option value="Web App">Web App</option>
+                    <option value="E-commerce">E-commerce</option>
+                    <option value="Branding / UI">Branding / UI</option>
+                    <option value="DNS / Email Setup">DNS / Email Setup</option>
+                    <option value="Cloud / Servers">Cloud / Servers</option>
+                    <option value="Maintenance">Maintenance</option>
+                    <option value="Other">Other</option>
+                  </select>
+                  <span class="ct-error" id="err-projectType"></span>
+                </div>
+                <div class="ct-field">
+                  <label for="budget">Budget range <span class="ct-opt">optional</span></label>
+                  <select id="budget" name="budget">
+                    <option value="" disabled selected>Select a range</option>
+                    <option value="Under $1k">&lt;$1k</option>
+                    <option value="$1k - $3k">$1k - $3k</option>
+                    <option value="$3k - $7k">$3k - $7k</option>
+                    <option value="$7k - $15k">$7k - $15k</option>
+                    <option value="$15k+">$15k+</option>
+                  </select>
+                </div>
+              </div>
+
+              <div class="ct-row">
+                <div class="ct-field">
+                  <label for="timeline">Timeline <span class="ct-opt">optional</span></label>
+                  <select id="timeline" name="timeline">
+                    <option value="" disabled selected>Select a timeline</option>
+                    <option value="ASAP">ASAP</option>
+                    <option value="2-4 weeks">2-4 weeks</option>
+                    <option value="1-2 months">1-2 months</option>
+                    <option value="Flexible">Flexible</option>
+                  </select>
+                </div>
+              </div>
+
+              <div class="ct-row">
+                <div class="ct-field">
+                  <label for="message">Message <span class="ct-req">*</span></label>
+                  <textarea id="message" name="message" rows="5" placeholder="Tell us about your project -- what it is, what it needs to do, and anything else that's relevant." required></textarea>
+                  <span class="ct-error" id="err-message"></span>
+                </div>
+              </div>
+
+              <div class="ct-row ct-row-submit">
+                <button class="btn btn-primary ct-submit" id="submitBtn" type="submit">Send message</button>
+                <span class="ct-form-note">We read every message. No automated replies.</span>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
   </main>
 
   <footer class="site-footer">
@@ -49,7 +184,7 @@
           <ul>
             <li><a href="/services/web-design/">Web Design</a></li>
             <li><a href="/services/web-development/">Web Development</a></li>
-            <li><a href="/services/seo-performance/">SEO & Performance</a></li>
+            <li><a href="/services/seo-performance/">SEO &amp; Performance</a></li>
             <li><a href="/services/maintenance-support/">Maintenance</a></li>
             <li><a href="/services/consulting-audits/">Consulting</a></li>
           </ul>
@@ -70,7 +205,7 @@
             <li><a href="/privacy/">Privacy Policy</a></li>
             <li><a href="/terms/">Terms of Service</a></li>
           </ul>
-          <h4 class="footer-heading-spaced">Connect</h4>
+          <h4 style="margin-top:24px;">Connect</h4>
           <ul>
             <li><a href="/contact/">Contact</a></li>
           </ul>
@@ -83,5 +218,6 @@
   </footer>
 
   <script src="../assets/js/main.js"></script>
+  <script src="./contact.js"></script>
 </body>
 </html>
