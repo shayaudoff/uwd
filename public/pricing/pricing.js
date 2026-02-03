@@ -22,9 +22,6 @@ let selectedBudget   = '';
 let selectedTimeline = '';
 let selectedStyle    = '';
 let isSubmitting     = false;
-const STATUS_VISIBLE_MS = 10000;
-let statusClearTimer = null;
-let postSuccessResetTimer = null;
 const TIER_LABELS = {
   micro: 'Quick Fix / Micro',
   website: 'Website Build',
@@ -35,6 +32,9 @@ const TIER_LABELS = {
 // DOM READY
 // ============================================================
 document.addEventListener('DOMContentLoaded', () => {
+  document.querySelectorAll('.pr-panel').forEach(p => p.classList.remove('show'));
+  const initialForm = document.getElementById('estimateForm');
+  if (initialForm) initialForm.style.display = '';
 
   // ── Scroll reveal ──
   const revealObs = new IntersectionObserver((entries) => {
@@ -225,6 +225,7 @@ document.addEventListener('DOMContentLoaded', () => {
     document.querySelectorAll('.pr-panel').forEach(p => p.classList.remove('show'));
     document.getElementById('estimateForm').style.display = '';
     setSubmitStatus('', '');
+    goToStep(0, false);
   });
 });
 
@@ -402,7 +403,6 @@ async function handleSubmit(e) {
   const form = document.getElementById('estimateForm');
   if (!form) return;
   if (isSubmitting) return;
-  clearStatusTimers();
 
   // 1. strict final validation for all required data
   if (!validateAll()) {
@@ -456,14 +456,12 @@ async function handleSubmit(e) {
   // 2. honeypot
   if ((document.getElementById('pr_hp')?.value || '').trim() !== '') {
     setSubmitStatus('Unable to submit.', 'error');
-    scheduleStatusClear();
     return;
   }
 
   // 3. time gate
   if ((Date.now() - pageLoadedAt) / 1000 < MIN_FILL_SECONDS) {
     setSubmitStatus('Please take a few seconds to complete the form, then submit again.', 'error');
-    scheduleStatusClear();
     return;
   }
 
@@ -594,11 +592,12 @@ async function handleSubmit(e) {
     }
 
     setSubmitStatus('Request sent ✅', 'success');
-    scheduleStatusClear(STATUS_VISIBLE_MS);
-    schedulePostSuccessReset(form, STATUS_VISIBLE_MS);
+    showPanel('formSuccess');
+    resetEstimateFormState(form);
+    goToStep(0, false);
   } catch (_err) {
     setSubmitStatus('Send failed. Please try again.', 'error');
-    scheduleStatusClear();
+    showPanel('formError');
   } finally {
     isSubmitting = false;
     btn.disabled = false;
@@ -624,38 +623,17 @@ function setSubmitStatus(message, type) {
   if (type === 'error') status.classList.add('is-error');
 }
 
-function clearStatusTimers() {
-  if (statusClearTimer) {
-    clearTimeout(statusClearTimer);
-    statusClearTimer = null;
-  }
-  if (postSuccessResetTimer) {
-    clearTimeout(postSuccessResetTimer);
-    postSuccessResetTimer = null;
-  }
-}
-
-function scheduleStatusClear(ms = STATUS_VISIBLE_MS) {
-  if (statusClearTimer) clearTimeout(statusClearTimer);
-  statusClearTimer = setTimeout(() => {
-    setSubmitStatus('', '');
-    statusClearTimer = null;
-  }, ms);
-}
-
-function schedulePostSuccessReset(form, ms = STATUS_VISIBLE_MS) {
-  if (postSuccessResetTimer) clearTimeout(postSuccessResetTimer);
-  postSuccessResetTimer = setTimeout(() => {
-    form.reset();
-    selectedTier = ''; selectedBudget = ''; selectedTimeline = ''; selectedStyle = '';
-    document.querySelectorAll('.pr-starter-card').forEach(c => c.setAttribute('aria-pressed','false'));
-    document.querySelectorAll('.pr-choice-card-active').forEach(c => c.classList.remove('pr-choice-card-active'));
-    document.querySelectorAll('.pr-micro-card, .pr-pkg-card, .pr-custom-card, .pr-retainer-card').forEach(c => c.setAttribute('aria-pressed', 'false'));
-    document.querySelectorAll('.pr-type-btn, .pr-budget-btn, .pr-tl-btn, .pr-style-btn').forEach(b => b.classList.remove('active'));
-    document.getElementById('est-styleDir').value = '';
-    document.getElementById('est-budget').value   = '';
-    document.getElementById('est-timeline').value = '';
-    goToStep(0, false);
-    postSuccessResetTimer = null;
-  }, ms);
+function resetEstimateFormState(form) {
+  form.reset();
+  selectedTier = '';
+  selectedBudget = '';
+  selectedTimeline = '';
+  selectedStyle = '';
+  document.querySelectorAll('.pr-starter-card').forEach(c => c.setAttribute('aria-pressed','false'));
+  document.querySelectorAll('.pr-choice-card-active').forEach(c => c.classList.remove('pr-choice-card-active'));
+  document.querySelectorAll('.pr-micro-card, .pr-pkg-card, .pr-custom-card, .pr-retainer-card').forEach(c => c.setAttribute('aria-pressed', 'false'));
+  document.querySelectorAll('.pr-type-btn, .pr-budget-btn, .pr-tl-btn, .pr-style-btn').forEach(b => b.classList.remove('active'));
+  document.getElementById('est-styleDir').value = '';
+  document.getElementById('est-budget').value   = '';
+  document.getElementById('est-timeline').value = '';
 }
