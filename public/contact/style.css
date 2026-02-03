@@ -132,6 +132,45 @@
   min-width: 0;
 }
 
+/* --- Form status notice --- */
+.ct-notice {
+  border: 1px solid var(--border, rgba(255,255,255,0.12));
+  background: var(--card, rgba(255,255,255,0.06));
+  border-radius: var(--radius, 14px);
+  padding: 28px;
+  margin-bottom: 24px;
+}
+
+.ct-notice-badge {
+  display: inline-block;
+  padding: 6px 12px;
+  background: rgba(74,158,255,0.1);
+  border: 1px solid rgba(74,158,255,0.28);
+  border-radius: 999px;
+  color: var(--accent, #4a9eff);
+  font-size: 12px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin-bottom: 14px;
+}
+
+.ct-notice-title {
+  margin: 0 0 10px;
+  font-size: 24px;
+  line-height: 1.25;
+}
+
+.ct-notice-text {
+  margin: 0 0 18px;
+  color: var(--muted, #aab6c5);
+  line-height: 1.6;
+}
+
+.ct-notice-btn {
+  display: inline-block;
+}
+
 /* --- Success / Error panels --- */
 .ct-panel {
   display: none;
@@ -428,5 +467,9 @@
 
   .ct-panel {
     padding: 32px 24px;
+  }
+
+  .ct-notice-title {
+    font-size: 20px;
   }
 }
