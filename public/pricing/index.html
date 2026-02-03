@@ -4,87 +4,930 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Pricing | Udoff Web Development</title>
-  <script>
-    document.documentElement.classList.add('js');
-  </script>
+  <meta name="description" content="Transparent pricing from micro-engagements to enterprise platforms. Fixed-scope options, package ranges, and custom proposals.">
   <link rel="stylesheet" href="../assets/css/global.css" />
-  <link rel="stylesheet" href="../assets/css/responsive.css" />
   <link rel="stylesheet" href="./style.css" />
 </head>
 <body>
-  <header class="site-header">
-    <div class="container">
-      <h1 class="logo"><a href="/">Udoff Web Development</a></h1>
-      <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav">Menu</button>
-      <nav class="nav" id="site-nav">
-        <a href="/services/">Services</a>
-        <a href="/work/">Work</a>
-        <a href="/process/">Process</a>
-        <a href="/about/">About</a>
-        <a href="/contact/">Contact</a>
-      </nav>
+<header class="site-header">
+  <div class="container">
+    <h1 class="logo"><a href="/" style="color:inherit;text-decoration:none;">Udoff Web Development</a></h1>
+    <nav class="nav">
+      <a href="/services/">Services</a>
+      <a href="/work/">Work</a>
+      <a href="/process/">Process</a>
+      <a href="/about/">About</a>
+      <a href="/contact/">Contact</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+
+<!-- ═══════════════════════════════════════════════════════════
+     1. HERO
+     ═══════════════════════════════════════════════════════════ -->
+<section class="pr-hero">
+  <div class="container">
+    <h1 class="pr-hero-title">Pricing that <span class="gradient-text">scales.</span></h1>
+    <p class="pr-hero-sub">Transparent ranges. Fixed-scope options for small work. Custom proposals for complex builds.</p>
+    <div class="pr-hero-btns">
+      <a href="#estimate-form" class="btn btn-primary pr-hero-btn">Get an Estimate</a>
+      <a href="/contact/" class="btn btn-secondary">Book a 15-min call</a>
     </div>
-  </header>
+    <div class="pr-trust">
+      <span>Contracts</span><span>NDAs</span><span>Performance budgets</span><span>Accessibility</span><span>SEO-first</span>
+    </div>
+  </div>
+</section>
 
-  <main>
-    <section class="work-center">
-      <div class="container">
-        <div class="work-card">
-          <span class="work-badge">Under Construction</span>
-          <h1 class="work-title">Pricing</h1>
-          <p class="work-desc">We are tuning package pricing right now. Even our calculator asked for a coffee break.</p>
-          <a href="/contact/" class="btn btn-primary work-btn">Request a custom quote</a>
-        </div>
-      </div>
-    </section>
-  </main>
+<!-- Sticky section nav -->
+<nav class="pr-index" aria-label="Pricing sections">
+  <div class="container">
+    <div class="pr-index-track">
+      <a href="#starting-point" class="pr-index-link active">Start</a>
+      <a href="#micro" class="pr-index-link">Micro</a>
+      <a href="#website" class="pr-index-link">Website</a>
+      <a href="#platform" class="pr-index-link">Platform</a>
+      <a href="#addons" class="pr-index-link">Add-ons</a>
+      <a href="#retainers" class="pr-index-link">Retainers</a>
+      <a href="#how-it-works" class="pr-index-link">How It Works</a>
+      <a href="#faq" class="pr-index-link">FAQ</a>
+      <a href="#estimate-form" class="pr-index-link">Estimate</a>
+    </div>
+  </div>
+</nav>
 
-  <footer class="site-footer">
-    <div class="container">
-      <div class="footer-grid">
-        <div class="footer-col">
-          <h3>Udoff Web Development</h3>
-          <p>Building the web, one site at a time.</p>
-        </div>
-        <div class="footer-col">
-          <h4>Services</h4>
-          <ul>
-            <li><a href="/services/web-design/">Web Design</a></li>
-            <li><a href="/services/web-development/">Web Development</a></li>
-            <li><a href="/services/seo-performance/">SEO & Performance</a></li>
-            <li><a href="/services/maintenance-support/">Maintenance</a></li>
-            <li><a href="/services/consulting-audits/">Consulting</a></li>
-          </ul>
-        </div>
-        <div class="footer-col">
-          <h4>Company</h4>
-          <ul>
-            <li><a href="/about/">About</a></li>
-            <li><a href="/work/">Work</a></li>
-            <li><a href="/process/">Process</a></li>
-            <li><a href="/pricing/">Pricing</a></li>
-            <li><a href="/faq/">FAQ</a></li>
-          </ul>
-        </div>
-        <div class="footer-col">
-          <h4>Legal</h4>
-          <ul>
-            <li><a href="/privacy/">Privacy Policy</a></li>
-            <li><a href="/terms/">Terms of Service</a></li>
-          </ul>
-          <h4 class="footer-heading-spaced">Connect</h4>
-          <ul>
-            <li><a href="/contact/">Contact</a></li>
-          </ul>
-        </div>
-      </div>
-      <div class="footer-bottom">
-        <p>&copy; 2026 Udoff Web Development. All rights reserved.</p>
+<!-- ═══════════════════════════════════════════════════════════
+     2. CHOOSE YOUR STARTING POINT (pre-fills form)
+     ═══════════════════════════════════════════════════════════ -->
+<section class="pr-section pr-starter" id="starting-point">
+  <div class="container">
+    <h2 class="pr-section-title">Choose your starting point</h2>
+    <p class="pr-section-sub">Pick the tier that fits. It pre-fills the estimate form below — you can always adjust.</p>
+    <div class="pr-starter-grid">
+
+      <button class="pr-starter-card" data-tier="micro" aria-pressed="false">
+        <span class="pr-starter-badge">Quick &amp; fixed</span>
+        <h3>Micro</h3>
+        <p class="pr-starter-best">Best for isolated tasks, fixes, and setups</p>
+        <span class="pr-starter-range">$50 – $1,500</span>
+        <span class="pr-starter-time">1–3 days typical</span>
+        <ul class="pr-starter-list">
+          <li>UX audits &amp; wireframes</li>
+          <li>Bug fixes &amp; speed passes</li>
+          <li>DNS &amp; email setup</li>
+        </ul>
+      </button>
+
+      <button class="pr-starter-card pr-starter-card--pop" data-tier="website" aria-pressed="false">
+        <span class="pr-starter-badge pr-starter-badge--accent">Most common</span>
+        <h3>Website</h3>
+        <p class="pr-starter-best">Best for businesses, portfolios, and e-commerce</p>
+        <span class="pr-starter-range">$1,000 – $60,000</span>
+        <span class="pr-starter-time">2–6 weeks typical</span>
+        <ul class="pr-starter-list">
+          <li>Landing pages to full sites</li>
+          <li>Design system &amp; SEO</li>
+          <li>CMS &amp; commerce options</li>
+        </ul>
+      </button>
+
+      <button class="pr-starter-card" data-tier="platform" aria-pressed="false">
+        <span class="pr-starter-badge">Enterprise</span>
+        <h3>Platform / App</h3>
+        <p class="pr-starter-best">Best for SaaS, internal tools, and marketplaces</p>
+        <span class="pr-starter-range">$25,000 – $20M+</span>
+        <span class="pr-starter-time">6–24+ weeks</span>
+        <ul class="pr-starter-list">
+          <li>Custom auth &amp; databases</li>
+          <li>Payments &amp; dashboards</li>
+          <li>Compliance &amp; scaling</li>
+        </ul>
+      </button>
+
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════════
+     3. MICRO-ENGAGEMENTS
+     ═══════════════════════════════════════════════════════════ -->
+<section class="pr-section pr-micro" id="micro">
+  <div class="container">
+    <div class="pr-section-head">
+      <div>
+        <h2 class="pr-section-title">Quick Wins <span class="pr-tag">Fixed Price</span></h2>
+        <p class="pr-section-sub">Strict scope. Fast delivery. No surprises.</p>
       </div>
     </div>
-  </footer>
 
-  <script src="../assets/js/main.js"></script>
-  <script src="./pricing.js"></script>
+    <!-- UX / UI -->
+    <div class="pr-micro-group">
+      <h3 class="pr-micro-group-title">UX &amp; UI</h3>
+      <div class="pr-micro-grid">
+        <div class="pr-micro-card">
+          <div class="pr-micro-top">
+            <h4>UX Audit Snapshot</h4>
+            <span class="pr-micro-price">$75 – $150</span>
+          </div>
+          <p class="pr-micro-scope"><strong>Includes:</strong> 10–15 priority findings, quick wireframe suggestions, ranked action list — for one page.</p>
+          <p class="pr-micro-out"><strong>Out of scope:</strong> full site audit, redesign, implementation.</p>
+        </div>
+        <div class="pr-micro-card">
+          <div class="pr-micro-top">
+            <h4>Single Section Wireframe</h4>
+            <span class="pr-micro-price">$50 – $100</span>
+          </div>
+          <p class="pr-micro-scope"><strong>Includes:</strong> one section layout (desktop + mobile), structure and copy blocks.</p>
+          <p class="pr-micro-out"><strong>Out of scope:</strong> full page, visual design, dev.</p>
+        </div>
+        <div class="pr-micro-card">
+          <div class="pr-micro-top">
+            <h4>Landing Page Structure Plan</h4>
+            <span class="pr-micro-price">$100 – $250</span>
+          </div>
+          <p class="pr-micro-scope"><strong>Includes:</strong> section hierarchy, CTA strategy, content outline, SEO heading plan.</p>
+          <p class="pr-micro-out"><strong>Out of scope:</strong> visual design, copy writing, build.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Dev -->
+    <div class="pr-micro-group">
+      <h3 class="pr-micro-group-title">Dev Fixes</h3>
+      <div class="pr-micro-grid">
+        <div class="pr-micro-card">
+          <div class="pr-micro-top">
+            <h4>Bug Fix (minor)</h4>
+            <span class="pr-micro-price">$100 – $250</span>
+          </div>
+          <p class="pr-micro-scope"><strong>Includes:</strong> one isolated CSS / HTML / JS issue, diagnosed and resolved.</p>
+          <p class="pr-micro-out"><strong>Out of scope:</strong> refactors, architecture changes, multiple bugs.</p>
+        </div>
+        <div class="pr-micro-card">
+          <div class="pr-micro-top">
+            <h4>Speed Pass</h4>
+            <span class="pr-micro-price">$250 – $600</span>
+          </div>
+          <p class="pr-micro-scope"><strong>Includes:</strong> image &amp; asset audit, caching headers, top-3 performance fixes implemented.</p>
+          <p class="pr-micro-out"><strong>Out of scope:</strong> full performance overhaul, code refactor.</p>
+        </div>
+        <div class="pr-micro-card">
+          <div class="pr-micro-top">
+            <h4>SEO Meta Setup</h4>
+            <span class="pr-micro-price">$100 – $300</span>
+          </div>
+          <p class="pr-micro-scope"><strong>Includes:</strong> title / description templates, OG tags, sitemap + robots basics.</p>
+          <p class="pr-micro-out"><strong>Out of scope:</strong> keyword research, link building, content.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Setup -->
+    <div class="pr-micro-group">
+      <h3 class="pr-micro-group-title">Setup &amp; Infrastructure</h3>
+      <div class="pr-micro-grid">
+        <div class="pr-micro-card">
+          <div class="pr-micro-top">
+            <h4>Domain + DNS Connect</h4>
+            <span class="pr-micro-price">$100 – $400</span>
+          </div>
+          <p class="pr-micro-scope"><strong>Includes:</strong> registrar config, SSL, redirects, verification checks.</p>
+          <p class="pr-micro-out"><strong>Out of scope:</strong> hosting migration, site build.</p>
+        </div>
+        <div class="pr-micro-card">
+          <div class="pr-micro-top">
+            <h4>Email DNS (SPF / DKIM / DMARC)</h4>
+            <span class="pr-micro-price">$150 – $500</span>
+          </div>
+          <p class="pr-micro-scope"><strong>Includes:</strong> clean DNS plan, record setup, deliverability verification.</p>
+          <p class="pr-micro-out"><strong>Out of scope:</strong> ESP migration, mailbox management.</p>
+        </div>
+      </div>
+    </div>
+
+    <a href="#website" class="pr-upgrade-link">Need more than this? → Jump to full site packages</a>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════════
+     4. STANDARD WEBSITE PACKAGES
+     ═══════════════════════════════════════════════════════════ -->
+<section class="pr-section pr-packages" id="website">
+  <div class="container">
+    <h2 class="pr-section-title">Website Packages</h2>
+    <p class="pr-section-sub">Predictable outcomes for typical site sizes. Ranges — not guesses.</p>
+    <div class="pr-pkg-grid">
+
+      <div class="pr-pkg-card">
+        <span class="pr-pkg-label">Starter</span>
+        <h3 class="pr-pkg-name">Landing Page</h3>
+        <span class="pr-pkg-price">$1,500 – $4,000</span>
+        <p class="pr-pkg-best">One offer. One CTA. High polish.</p>
+        <ul class="pr-pkg-list">
+          <li>1 page (hero + sections)</li>
+          <li>Fully responsive</li>
+          <li>Basic SEO + analytics</li>
+          <li>Contact form included</li>
+        </ul>
+        <p class="pr-pkg-not"><strong>Not included:</strong> custom backend, complex animations, copywriting.</p>
+      </div>
+
+      <div class="pr-pkg-card pr-pkg-card--pop">
+        <span class="pr-pkg-label pr-pkg-label--accent">Most popular</span>
+        <h3 class="pr-pkg-name">Professional Site</h3>
+        <span class="pr-pkg-price">$4,000 – $12,000</span>
+        <p class="pr-pkg-best">Services business, personal brand, small clinic.</p>
+        <ul class="pr-pkg-list">
+          <li>5–10 pages</li>
+          <li>Design system alignment</li>
+          <li>On-page SEO + performance pass</li>
+          <li>Analytics + tracking setup</li>
+          <li>CMS optional (add-on)</li>
+        </ul>
+        <p class="pr-pkg-not"><strong>Deliverables:</strong> sitemap → wireframe → build → QA → launch.</p>
+      </div>
+
+      <div class="pr-pkg-card">
+        <span class="pr-pkg-label">Design-forward</span>
+        <h3 class="pr-pkg-name">Premium Brand</h3>
+        <span class="pr-pkg-price">$10,000 – $25,000</span>
+        <p class="pr-pkg-best">Brand story sites, high-touch marketing.</p>
+        <ul class="pr-pkg-list">
+          <li>Custom UI components</li>
+          <li>Micro-interactions &amp; animation</li>
+          <li>Content strategy support</li>
+          <li>Advanced SEO foundations</li>
+          <li>2 rounds design iteration</li>
+        </ul>
+        <p class="pr-pkg-not"><strong>A/B-ready structure</strong> included.</p>
+      </div>
+
+      <div class="pr-pkg-card">
+        <span class="pr-pkg-label">Commerce</span>
+        <h3 class="pr-pkg-name">E-Commerce</h3>
+        <span class="pr-pkg-price">$8,000 – $60,000</span>
+        <p class="pr-pkg-best">Shopify, headless, or fully custom stores.</p>
+        <ul class="pr-pkg-list">
+          <li>Product + collection architecture</li>
+          <li>Checkout customization (scoped)</li>
+          <li>Email &amp; CRM integrations</li>
+          <li>Inventory &amp; order flows</li>
+        </ul>
+        <p class="pr-pkg-not"><strong>Range depends on</strong> platform choice and checkout complexity.</p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════════
+     5. CUSTOM SYSTEMS / PLATFORMS
+     ═══════════════════════════════════════════════════════════ -->
+<section class="pr-section pr-custom" id="platform">
+  <div class="container">
+    <h2 class="pr-section-title">Custom Systems &amp; Platforms</h2>
+    <p class="pr-section-sub">Big ranges, justified by what actually drives complexity.</p>
+
+    <div class="pr-custom-grid">
+      <div class="pr-custom-card">
+        <span class="pr-custom-num">A</span>
+        <h3>MVP Platform</h3>
+        <span class="pr-custom-price">$25,000 – $150,000</span>
+        <p class="pr-custom-time">6–16 weeks</p>
+        <ul class="pr-custom-list">
+          <li>Product discovery</li>
+          <li>Design + frontend + backend</li>
+          <li>Auth, roles, basic admin</li>
+          <li>Analytics &amp; logging</li>
+          <li>Deployment pipeline</li>
+        </ul>
+      </div>
+      <div class="pr-custom-card pr-custom-card--pop">
+        <span class="pr-custom-num">B</span>
+        <h3>Growth Platform</h3>
+        <span class="pr-custom-price">$150,000 – $750,000</span>
+        <p class="pr-custom-time">16–40 weeks</p>
+        <ul class="pr-custom-list">
+          <li>Payments &amp; subscriptions</li>
+          <li>Complex permissions</li>
+          <li>Dashboards &amp; reporting</li>
+          <li>Robust admin tooling</li>
+          <li>Multi-environment + monitoring</li>
+        </ul>
+      </div>
+      <div class="pr-custom-card">
+        <span class="pr-custom-num">C</span>
+        <h3>Enterprise Program</h3>
+        <span class="pr-custom-price">$750,000 – $20M+</span>
+        <p class="pr-custom-time">Phased, milestone-based</p>
+        <ul class="pr-custom-list">
+          <li>Discovery &amp; architecture reviews</li>
+          <li>Compliance (SOC2 / HIPAA / PCI)</li>
+          <li>SSO, audit logs, data pipelines</li>
+          <li>Load testing &amp; SLAs</li>
+          <li>Long-term roadmap</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Pricing drivers -->
+    <div class="pr-drivers">
+      <h3 class="pr-drivers-title">What drives enterprise pricing</h3>
+      <div class="pr-drivers-grid">
+        <span>Complexity of features</span>
+        <span>Data model &amp; migrations</span>
+        <span>Integration count</span>
+        <span>Security / compliance</span>
+        <span>Scale &amp; performance targets</span>
+        <span>Stakeholder count</span>
+        <span>Content volume</span>
+        <span>QA &amp; test automation</span>
+        <span>Deployment environments</span>
+        <span>Support / SLA requirements</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════════
+     6. ADD-ONS
+     ═══════════════════════════════════════════════════════════ -->
+<section class="pr-section pr-addons" id="addons">
+  <div class="container">
+    <h2 class="pr-section-title">Add-Ons</h2>
+    <p class="pr-section-sub">Mix and match. Build the budget that fits your project.</p>
+    <div class="pr-addon-grid">
+      <div class="pr-addon-row"><span class="pr-addon-name">Copywriting (light edit)</span><span class="pr-addon-price">$150 – $800</span></div>
+      <div class="pr-addon-row"><span class="pr-addon-name">Full copy per page</span><span class="pr-addon-price">$250 – $1,500 / pg</span></div>
+      <div class="pr-addon-row"><span class="pr-addon-name">Brand identity refresh</span><span class="pr-addon-price">$1,000 – $8,000</span></div>
+      <div class="pr-addon-row"><span class="pr-addon-name">Extra page templates</span><span class="pr-addon-price">$200 – $1,200 ea</span></div>
+      <div class="pr-addon-row"><span class="pr-addon-name">CMS setup (basic)</span><span class="pr-addon-price">$500 – $3,000</span></div>
+      <div class="pr-addon-row"><span class="pr-addon-name">Blog system</span><span class="pr-addon-price">$500 – $4,000</span></div>
+      <div class="pr-addon-row"><span class="pr-addon-name">Multilingual</span><span class="pr-addon-price">$1,000 – $10,000+</span></div>
+      <div class="pr-addon-row"><span class="pr-addon-name">Accessibility (WCAG pass)</span><span class="pr-addon-price">$1,000 – $15,000</span></div>
+      <div class="pr-addon-row"><span class="pr-addon-name">Performance optimization</span><span class="pr-addon-price">$1,500 – $20,000</span></div>
+      <div class="pr-addon-row"><span class="pr-addon-name">SEO deep work (technical)</span><span class="pr-addon-price">$1,000 – $25,000 / mo</span></div>
+      <div class="pr-addon-row"><span class="pr-addon-name">Ongoing maintenance</span><span class="pr-addon-price">$150 – $2,500 / mo</span></div>
+      <div class="pr-addon-row"><span class="pr-addon-name">On-call / SLA support</span><span class="pr-addon-price">Custom</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════════
+     7. RETAINERS
+     ═══════════════════════════════════════════════════════════ -->
+<section class="pr-section pr-retainers" id="retainers">
+  <div class="container">
+    <h2 class="pr-section-title">Ongoing Care Plans</h2>
+    <p class="pr-section-sub">Stay supported after launch. Pick the level that matches how active your site needs to be.</p>
+    <div class="pr-retainer-grid">
+      <div class="pr-retainer-card">
+        <h3>Essential</h3>
+        <span class="pr-retainer-price">$150 – $500 <em>/mo</em></span>
+        <ul class="pr-retainer-list">
+          <li>Monthly updates &amp; patches</li>
+          <li>Automated backups</li>
+          <li>Uptime monitoring</li>
+          <li>Small fixes (&lt;2 hrs/mo)</li>
+        </ul>
+      </div>
+      <div class="pr-retainer-card pr-retainer-card--pop">
+        <h3>Growth</h3>
+        <span class="pr-retainer-price">$750 – $2,500 <em>/mo</em></span>
+        <ul class="pr-retainer-list">
+          <li>Everything in Essential</li>
+          <li>Conversion improvements</li>
+          <li>Content &amp; blog support</li>
+          <li>Light SEO &amp; analytics review</li>
+        </ul>
+      </div>
+      <div class="pr-retainer-card">
+        <h3>Engineering Partner</h3>
+        <span class="pr-retainer-price">$3,000 – $15,000+ <em>/mo</em></span>
+        <ul class="pr-retainer-list">
+          <li>Everything in Growth</li>
+          <li>Feature development</li>
+          <li>Roadmap planning</li>
+          <li>Priority response &amp; SLA</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════════
+     8. HOW PRICING WORKS + PROCESS STRIP
+     ═══════════════════════════════════════════════════════════ -->
+<section class="pr-section pr-how" id="how-it-works">
+  <div class="container">
+    <h2 class="pr-section-title">How pricing works</h2>
+    <div class="pr-how-grid">
+      <div class="pr-how-item">
+        <h4>Fixed-scope</h4>
+        <p>Small tasks with strict boundaries. Price is set before work begins.</p>
+      </div>
+      <div class="pr-how-item">
+        <h4>Package ranges</h4>
+        <p>Predictable outcomes for typical site sizes. Final number is scoped in Discovery.</p>
+      </div>
+      <div class="pr-how-item">
+        <h4>Custom proposals</h4>
+        <p>Priced by complexity, risk, timeline, and what we're responsible for.</p>
+      </div>
+      <div class="pr-how-item">
+        <h4>Payment structure</h4>
+        <p><strong>Micro:</strong> 100% or 50/50.<br><strong>Sites:</strong> 40/40/20.<br><strong>Platforms:</strong> discovery fee + milestones.</p>
+      </div>
+    </div>
+    <p class="pr-minimum">Project minimum for full builds: <strong>$1,500</strong>. Micro-engagements start at <strong>$50</strong>.</p>
+
+    <!-- Timeline strip -->
+    <div class="pr-timeline-strip">
+      <div class="pr-ts-step"><span class="pr-ts-num">1</span><span class="pr-ts-label">Intake</span></div>
+      <span class="pr-ts-line"></span>
+      <div class="pr-ts-step"><span class="pr-ts-num">2</span><span class="pr-ts-label">Discovery</span></div>
+      <span class="pr-ts-line"></span>
+      <div class="pr-ts-step"><span class="pr-ts-num">3</span><span class="pr-ts-label">Design</span></div>
+      <span class="pr-ts-line"></span>
+      <div class="pr-ts-step"><span class="pr-ts-num">4</span><span class="pr-ts-label">Build</span></div>
+      <span class="pr-ts-line"></span>
+      <div class="pr-ts-step"><span class="pr-ts-num">5</span><span class="pr-ts-label">Launch</span></div>
+    </div>
+    <div class="pr-timeline-times">
+      <span><strong>Micro:</strong> 1–3 days</span>
+      <span><strong>Standard site:</strong> 2–6 weeks</span>
+      <span><strong>Custom app:</strong> 6–24+ weeks</span>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════════
+     9. FAQs
+     ═══════════════════════════════════════════════════════════ -->
+<section class="pr-section pr-faq" id="faq">
+  <div class="container">
+    <h2 class="pr-section-title">Common questions</h2>
+    <div class="pr-faq-grid">
+      <div class="pr-faq-item">
+        <h4>Do you do fixed price?</h4>
+        <p>Yes — for defined scope. Larger projects use milestones or time-based billing once scope is clear.</p>
+      </div>
+      <div class="pr-faq-item">
+        <h4>Can I start small?</h4>
+        <p>Absolutely. Micro-engagements are designed to roll into bigger builds if the need grows.</p>
+      </div>
+      <div class="pr-faq-item">
+        <h4>What's required to begin?</h4>
+        <p>A deposit, access to your accounts, brand assets (if you have them), and a clear goal.</p>
+      </div>
+      <div class="pr-faq-item">
+        <h4>Do you do design only?</h4>
+        <p>Yes. UX structure, wireframes, and full UI kits are all available as standalone deliverables.</p>
+      </div>
+      <div class="pr-faq-item">
+        <h4>Do you work with existing sites?</h4>
+        <p>Yes. Audits, redesigns, and migrations are all in scope. We'll assess before we quote.</p>
+      </div>
+      <div class="pr-faq-item">
+        <h4>Do you provide hosting?</h4>
+        <p>We can manage it for you, but you own the account. We don't mark up hosting costs.</p>
+      </div>
+      <div class="pr-faq-item">
+        <h4>What about content?</h4>
+        <p>You provide it by default. Copywriting is available as an add-on if you need it.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════════
+     10. ESTIMATE FORM (multi-step, progressive disclosure)
+     ═══════════════════════════════════════════════════════════ -->
+<section class="pr-section pr-form-section" id="estimate-form">
+  <div class="container">
+    <div class="pr-form-wrap">
+
+      <!-- Success panel -->
+      <div class="pr-panel pr-panel-success" id="formSuccess" role="alert" aria-live="assertive">
+        <div class="pr-panel-icon">✓</div>
+        <h3>Estimate request received.</h3>
+        <p>I'll reply by email within 24 business hours with questions or a preliminary range.</p>
+        <a href="/contact/" class="btn btn-secondary pr-panel-btn">Book a call instead</a>
+      </div>
+
+      <!-- Error panel -->
+      <div class="pr-panel pr-panel-error" id="formError" role="alert" aria-live="assertive">
+        <div class="pr-panel-icon">!</div>
+        <h3>Something went wrong.</h3>
+        <p>The request didn't go through. Try again or email <a href="mailto:hello@udoffweb.com">hello@udoffweb.com</a> directly.</p>
+        <button class="btn btn-secondary pr-panel-btn" id="formRetryBtn" type="button">Try again</button>
+      </div>
+
+      <!-- The form -->
+      <form class="pr-form" id="estimateForm" novalidate>
+        <!-- honeypot -->
+        <input type="text" name="hp_field" id="pr_hp" autocomplete="off" tabindex="-1" aria-hidden="true" />
+
+        <!-- ── Step indicator ── -->
+        <div class="pr-steps">
+          <span class="pr-step-dot active" data-step="0"></span>
+          <span class="pr-step-dot" data-step="1"></span>
+          <span class="pr-step-dot" data-step="2"></span>
+          <span class="pr-step-dot" data-step="3"></span>
+          <span class="pr-step-dot" data-step="4"></span>
+          <span class="pr-step-dot" data-step="5"></span>
+        </div>
+
+        <!-- ════════ STEP 0 — Pick what you need ════════ -->
+        <div class="pr-step-panel" id="step0" data-step="0">
+          <h3 class="pr-step-title">What do you need?</h3>
+          <p class="pr-step-sub">Pick one. You can always change later.</p>
+          <div class="pr-type-btns">
+            <button type="button" class="pr-type-btn" data-tier="micro">Quick Fix / Micro</button>
+            <button type="button" class="pr-type-btn" data-tier="website">Website Build</button>
+            <button type="button" class="pr-type-btn" data-tier="platform">Platform / App</button>
+          </div>
+          <span class="pr-error" id="err-tier"></span>
+          <div class="pr-step-nav"><button type="button" class="btn btn-primary pr-next" data-target="1">Continue</button></div>
+        </div>
+
+        <!-- ════════ STEP 1 — Project basics ════════ -->
+        <div class="pr-step-panel hidden" id="step1" data-step="1">
+          <h3 class="pr-step-title">Your details</h3>
+          <div class="pr-row pr-row-2">
+            <div class="pr-field">
+              <label for="est-name">Full name <span class="pr-req">*</span></label>
+              <input type="text" id="est-name" name="fullName" autocomplete="name" placeholder="Jane Smith" />
+              <span class="pr-error" id="err-est-name"></span>
+            </div>
+            <div class="pr-field">
+              <label for="est-email">Email <span class="pr-req">*</span></label>
+              <input type="email" id="est-email" name="email" autocomplete="email" placeholder="jane@company.com" />
+              <span class="pr-error" id="err-est-email"></span>
+            </div>
+          </div>
+          <div class="pr-row pr-row-2">
+            <div class="pr-field">
+              <label for="est-company">Company / Brand <span class="pr-opt">optional</span></label>
+              <input type="text" id="est-company" name="company" autocomplete="organization" placeholder="Acme Inc." />
+            </div>
+            <div class="pr-field">
+              <label for="est-phone">Phone <span class="pr-opt">optional</span></label>
+              <input type="tel" id="est-phone" name="phone" autocomplete="tel" placeholder="+1 (555) 000-0000" />
+            </div>
+          </div>
+          <div class="pr-field">
+            <label>Preferred contact <span class="pr-opt">Email is fastest for quotes</span></label>
+            <div class="pr-radio-row">
+              <label class="pr-radio"><input type="radio" name="contactMethod" value="email" checked /><span>Email</span></label>
+              <label class="pr-radio"><input type="radio" name="contactMethod" value="phone" /><span>Phone</span></label>
+              <label class="pr-radio"><input type="radio" name="contactMethod" value="whatsapp" /><span>WhatsApp</span></label>
+            </div>
+          </div>
+          <div class="pr-step-nav">
+            <button type="button" class="btn btn-secondary pr-back" data-target="0">Back</button>
+            <button type="button" class="btn btn-primary pr-next" data-target="2">Continue</button>
+          </div>
+        </div>
+
+        <!-- ════════ STEP 2 — What are we building? (conditional) ════════ -->
+        <div class="pr-step-panel hidden" id="step2" data-step="2">
+          <h3 class="pr-step-title">What are we building?</h3>
+
+          <!-- MICRO fields -->
+          <div class="pr-conditional" data-show="micro">
+            <div class="pr-field">
+              <label for="est-microType">Service type <span class="pr-req">*</span></label>
+              <select id="est-microType" name="microType">
+                <option value="" disabled selected>Select one</option>
+                <option value="UX Audit Snapshot">UX Audit Snapshot</option>
+                <option value="Section Wireframe">Section Wireframe</option>
+                <option value="Landing Page Structure">Landing Page Structure Plan</option>
+                <option value="Bug Fix">Bug Fix</option>
+                <option value="Speed Pass">Speed Pass</option>
+                <option value="SEO Meta Setup">SEO Meta Setup</option>
+                <option value="Domain + DNS">Domain + DNS Connect</option>
+                <option value="Email DNS">Email DNS Setup</option>
+                <option value="Other">Other</option>
+              </select>
+              <span class="pr-error" id="err-est-microType"></span>
+            </div>
+            <div class="pr-field">
+              <label for="est-microDesc">Describe the task <span class="pr-req">*</span></label>
+              <textarea id="est-microDesc" name="microDesc" rows="3" placeholder="What's the issue or what do you need done?"></textarea>
+              <span class="pr-error" id="err-est-microDesc"></span>
+            </div>
+            <div class="pr-field">
+              <label for="est-microUrl">Link to relevant page <span class="pr-opt">optional</span></label>
+              <input type="url" id="est-microUrl" name="microUrl" placeholder="https://yoursite.com/page" />
+            </div>
+          </div>
+
+          <!-- WEBSITE fields -->
+          <div class="pr-conditional hidden" data-show="website">
+            <div class="pr-row pr-row-2">
+              <div class="pr-field">
+                <label for="est-siteType">Website type <span class="pr-req">*</span></label>
+                <select id="est-siteType" name="siteType">
+                  <option value="" disabled selected>Select one</option>
+                  <option value="Landing Page">Landing Page</option>
+                  <option value="Business Site">Business Site</option>
+                  <option value="Portfolio">Portfolio / Personal Brand</option>
+                  <option value="E-commerce">E-commerce</option>
+                  <option value="Redesign">Redesign</option>
+                </select>
+                <span class="pr-error" id="err-est-siteType"></span>
+              </div>
+              <div class="pr-field">
+                <label for="est-pages">Number of pages <span class="pr-req">*</span></label>
+                <select id="est-pages" name="pages">
+                  <option value="" disabled selected>Select</option>
+                  <option value="1">1</option>
+                  <option value="2–5">2–5</option>
+                  <option value="6–10">6–10</option>
+                  <option value="10+">10+</option>
+                </select>
+                <span class="pr-error" id="err-est-pages"></span>
+              </div>
+            </div>
+            <div class="pr-row pr-row-2">
+              <div class="pr-field">
+                <label for="est-cms">Need a CMS?</label>
+                <select id="est-cms" name="cms">
+                  <option value="" disabled selected>Select</option>
+                  <option value="Yes">Yes</option>
+                  <option value="No">No</option>
+                  <option value="Not sure">Not sure</option>
+                </select>
+              </div>
+              <div class="pr-field">
+                <label for="est-content">Content status</label>
+                <select id="est-content" name="content">
+                  <option value="" disabled selected>Select</option>
+                  <option value="Ready">Ready</option>
+                  <option value="Needs edits">Needs edits</option>
+                  <option value="Need copywriting">Need copywriting</option>
+                </select>
+              </div>
+            </div>
+            <div class="pr-field">
+              <label>Brand assets (logo / colors / typography)?</label>
+              <div class="pr-radio-row">
+                <label class="pr-radio"><input type="radio" name="brandAssets" value="Yes" /><span>Yes</span></label>
+                <label class="pr-radio"><input type="radio" name="brandAssets" value="Partial" /><span>Partial</span></label>
+                <label class="pr-radio"><input type="radio" name="brandAssets" value="No" /><span>No</span></label>
+              </div>
+            </div>
+          </div>
+
+          <!-- PLATFORM fields -->
+          <div class="pr-conditional hidden" data-show="platform">
+            <div class="pr-field">
+              <label for="est-prodType">Product type <span class="pr-req">*</span></label>
+              <select id="est-prodType" name="prodType">
+                <option value="" disabled selected>Select one</option>
+                <option value="SaaS">SaaS</option>
+                <option value="Internal Tool">Internal Tool</option>
+                <option value="Marketplace">Marketplace</option>
+                <option value="Consumer App">Consumer App</option>
+                <option value="Data / Dashboard">Data / Dashboard App</option>
+              </select>
+              <span class="pr-error" id="err-est-prodType"></span>
+            </div>
+            <div class="pr-field">
+              <label>Key features <span class="pr-req">*</span> <span class="pr-opt">pick at least one</span></label>
+              <div class="pr-check-grid">
+                <label class="pr-check"><input type="checkbox" name="features" value="authentication" /><span>Authentication</span></label>
+                <label class="pr-check"><input type="checkbox" name="features" value="roles" /><span>Roles / Permissions</span></label>
+                <label class="pr-check"><input type="checkbox" name="features" value="payments" /><span>Payments / Subscriptions</span></label>
+                <label class="pr-check"><input type="checkbox" name="features" value="admin" /><span>Admin Dashboard</span></label>
+                <label class="pr-check"><input type="checkbox" name="features" value="integrations" /><span>Integrations</span></label>
+                <label class="pr-check"><input type="checkbox" name="features" value="analytics" /><span>Analytics / Tracking</span></label>
+                <label class="pr-check"><input type="checkbox" name="features" value="uploads" /><span>File Uploads</span></label>
+                <label class="pr-check"><input type="checkbox" name="features" value="messaging" /><span>Messaging / Notifications</span></label>
+                <label class="pr-check"><input type="checkbox" name="features" value="search" /><span>Search</span></label>
+                <label class="pr-check"><input type="checkbox" name="features" value="other" /><span>Other</span></label>
+              </div>
+              <span class="pr-error" id="err-est-features"></span>
+            </div>
+            <div class="pr-field">
+              <label>Compliance / Security needs</label>
+              <div class="pr-check-grid">
+                <label class="pr-check"><input type="checkbox" name="compliance" value="none" /><span>None</span></label>
+                <label class="pr-check"><input type="checkbox" name="compliance" value="sso" /><span>SSO</span></label>
+                <label class="pr-check"><input type="checkbox" name="compliance" value="hipaa" /><span>HIPAA</span></label>
+                <label class="pr-check"><input type="checkbox" name="compliance" value="soc2" /><span>SOC2</span></label>
+                <label class="pr-check"><input type="checkbox" name="compliance" value="pci" /><span>PCI</span></label>
+                <label class="pr-check"><input type="checkbox" name="compliance" value="other" /><span>Other / Not sure</span></label>
+              </div>
+            </div>
+          </div>
+
+          <div class="pr-step-nav">
+            <button type="button" class="btn btn-secondary pr-back" data-target="1">Back</button>
+            <button type="button" class="btn btn-primary pr-next" data-target="3">Continue</button>
+          </div>
+        </div>
+
+        <!-- ════════ STEP 3 — Design needs ════════ -->
+        <div class="pr-step-panel hidden" id="step3" data-step="3">
+          <h3 class="pr-step-title">Design &amp; style</h3>
+          <div class="pr-field">
+            <label>What do you need? <span class="pr-req">*</span></label>
+            <div class="pr-radio-row">
+              <label class="pr-radio"><input type="radio" name="designScope" value="Design + Dev" /><span>Design + Dev</span></label>
+              <label class="pr-radio"><input type="radio" name="designScope" value="Design only" /><span>Design only</span></label>
+              <label class="pr-radio"><input type="radio" name="designScope" value="Dev only" /><span>Dev only</span></label>
+            </div>
+            <span class="pr-error" id="err-est-designScope"></span>
+          </div>
+          <div class="pr-field">
+            <label>Style direction</label>
+            <div class="pr-style-btns">
+              <button type="button" class="pr-style-btn" data-style="Clean &amp; minimal">Clean &amp; minimal</button>
+              <button type="button" class="pr-style-btn" data-style="Modern &amp; bold">Modern &amp; bold</button>
+              <button type="button" class="pr-style-btn" data-style="Luxury">Luxury</button>
+              <button type="button" class="pr-style-btn" data-style="Warm &amp; organic">Warm &amp; organic</button>
+              <button type="button" class="pr-style-btn" data-style="Tech-forward">Tech-forward</button>
+            </div>
+            <input type="hidden" id="est-styleDir" name="styleDirection" value="" />
+          </div>
+          <div class="pr-field">
+            <label>Reference links <span class="pr-opt">up to 3</span></label>
+            <input type="url" id="est-ref1" name="ref1" placeholder="https://example.com" />
+            <input type="url" id="est-ref2" name="ref2" placeholder="https://example.com" style="margin-top:8px;" />
+            <input type="url" id="est-ref3" name="ref3" placeholder="https://example.com" style="margin-top:8px;" />
+          </div>
+          <div class="pr-field">
+            <label for="est-mustKeep">Must-keep elements <span class="pr-opt">optional</span></label>
+            <textarea id="est-mustKeep" name="mustKeep" rows="2" placeholder="Existing branding, pages you want to preserve, SEO concerns…"></textarea>
+          </div>
+          <div class="pr-step-nav">
+            <button type="button" class="btn btn-secondary pr-back" data-target="2">Back</button>
+            <button type="button" class="btn btn-primary pr-next" data-target="4">Continue</button>
+          </div>
+        </div>
+
+        <!-- ════════ STEP 4 — Budget & timeline ════════ -->
+        <div class="pr-step-panel hidden" id="step4" data-step="4">
+          <h3 class="pr-step-title">Budget &amp; timeline</h3>
+          <div class="pr-field">
+            <label>Budget range <span class="pr-req">*</span></label>
+            <!-- button sets rendered by JS based on selected tier -->
+            <div class="pr-budget-btns" id="budgetBtns"></div>
+            <input type="hidden" id="est-budget" name="budget" value="" />
+            <span class="pr-error" id="err-est-budget"></span>
+          </div>
+          <div class="pr-field">
+            <label>Timeline <span class="pr-req">*</span></label>
+            <div class="pr-timeline-btns">
+              <button type="button" class="pr-tl-btn" data-tl="ASAP (rush)">ASAP (rush)</button>
+              <button type="button" class="pr-tl-btn" data-tl="2–4 weeks">2–4 weeks</button>
+              <button type="button" class="pr-tl-btn" data-tl="1–2 months">1–2 months</button>
+              <button type="button" class="pr-tl-btn" data-tl="3–6 months">3–6 months</button>
+              <button type="button" class="pr-tl-btn" data-tl="6+ months">6+ months</button>
+            </div>
+            <input type="hidden" id="est-timeline" name="timeline" value="" />
+            <span class="pr-error" id="err-est-timeline"></span>
+            <!-- rush notice -->
+            <p class="pr-rush-notice hidden" id="rushNotice">Rush delivery may add 20–50% depending on scope.</p>
+          </div>
+          <div class="pr-step-nav">
+            <button type="button" class="btn btn-secondary pr-back" data-target="3">Back</button>
+            <button type="button" class="btn btn-primary pr-next" data-target="5">Continue</button>
+          </div>
+        </div>
+
+        <!-- ════════ STEP 5 — Technical + logistics ════════ -->
+        <div class="pr-step-panel hidden" id="step5" data-step="5">
+          <h3 class="pr-step-title">Technical details</h3>
+          <div class="pr-row pr-row-2">
+            <div class="pr-field">
+              <label>Own a domain already?</label>
+              <div class="pr-radio-row">
+                <label class="pr-radio"><input type="radio" name="hasDomain" value="Yes" /><span>Yes</span></label>
+                <label class="pr-radio"><input type="radio" name="hasDomain" value="No" /><span>No</span></label>
+              </div>
+            </div>
+            <div class="pr-field">
+              <label>Hosting status</label>
+              <select id="est-hosting" name="hosting">
+                <option value="" disabled selected>Select</option>
+                <option value="Have hosting">Have hosting</option>
+                <option value="Need setup">Need setup</option>
+                <option value="Not sure">Not sure</option>
+              </select>
+            </div>
+          </div>
+          <div class="pr-field">
+            <label for="est-currentSite">Current site link <span class="pr-opt">optional</span></label>
+            <input type="url" id="est-currentSite" name="currentSite" placeholder="https://yourcurrentsite.com" />
+          </div>
+          <div class="pr-field">
+            <label>Access readiness</label>
+            <div class="pr-check-grid">
+              <label class="pr-check"><input type="checkbox" name="access" value="Can provide admin access quickly" /><span>Can provide admin access quickly</span></label>
+              <label class="pr-check"><input type="checkbox" name="access" value="Need help gathering access" /><span>Need help gathering access</span></label>
+              <label class="pr-check"><input type="checkbox" name="access" value="Not applicable" /><span>Not applicable</span></label>
+            </div>
+          </div>
+
+          <!-- Final description + consent + submit -->
+          <div class="pr-field">
+            <label for="est-desc">Project description <span class="pr-req">*</span></label>
+            <textarea id="est-desc" name="description" rows="4" placeholder="Goals, audience, must-haves — anything that helps us scope this accurately."></textarea>
+            <span class="pr-error" id="err-est-desc"></span>
+          </div>
+          <div class="pr-row pr-row-2">
+            <div class="pr-field">
+              <label>NDA needed?</label>
+              <div class="pr-radio-row">
+                <label class="pr-radio"><input type="radio" name="nda" value="Yes" /><span>Yes</span></label>
+                <label class="pr-radio"><input type="radio" name="nda" value="No" checked /><span>No</span></label>
+              </div>
+            </div>
+            <div class="pr-field">
+              <label for="est-source">How did you find us?</label>
+              <select id="est-source" name="source">
+                <option value="" disabled selected>Select</option>
+                <option value="Google">Google</option>
+                <option value="Word of mouth">Word of mouth</option>
+                <option value="Social media">Social media</option>
+                <option value="LinkedIn">LinkedIn</option>
+                <option value="Direct">Typed URL directly</option>
+                <option value="Other">Other</option>
+              </select>
+            </div>
+          </div>
+          <label class="pr-consent">
+            <input type="checkbox" id="est-consent" name="consent" />
+            <span>I understand pricing is an estimate until scope is finalized.</span>
+          </label>
+          <span class="pr-error" id="err-est-consent"></span>
+
+          <div class="pr-step-nav pr-step-nav--submit">
+            <button type="button" class="btn btn-secondary pr-back" data-target="4">Back</button>
+            <button type="submit" class="btn btn-primary pr-submit" id="estimateSubmitBtn">Request Estimate</button>
+            <span class="pr-submit-status" id="estimateSubmitStatus" aria-live="polite"></span>
+          </div>
+        </div>
+
+      </form>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<!-- ─── Footer ─── -->
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-col">
+        <h3>Udoff Web Development</h3>
+        <p>Building the web, one site at a time.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Services</h4>
+        <ul>
+          <li><a href="/services/web-design/">Web Design</a></li>
+          <li><a href="/services/web-development/">Web Development</a></li>
+          <li><a href="/services/seo-performance/">SEO &amp; Performance</a></li>
+          <li><a href="/services/maintenance-support/">Maintenance</a></li>
+          <li><a href="/services/consulting-audits/">Consulting</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Company</h4>
+        <ul>
+          <li><a href="/about/">About</a></li>
+          <li><a href="/work/">Work</a></li>
+          <li><a href="/process/">Process</a></li>
+          <li><a href="/pricing/">Pricing</a></li>
+          <li><a href="/faq/">FAQ</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Legal</h4>
+        <ul>
+          <li><a href="/privacy/">Privacy Policy</a></li>
+          <li><a href="/terms/">Terms of Service</a></li>
+        </ul>
+        <h4 style="margin-top:24px;">Connect</h4>
+        <ul>
+          <li><a href="/contact/">Contact</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2026 Udoff Web Development. All rights reserved.</p>
+    </div>
+  </div>
+</footer>
+
+<script src="../assets/js/main.js"></script>
+<script src="./pricing.js"></script>
 </body>
 </html>

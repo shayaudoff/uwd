@@ -113,11 +113,11 @@
   align-items: center;
   gap: 8px;
   font-size: 15px;
-  color: var(--text, #e8eef7);
+  color: #25d366;
   text-decoration: none;
   transition: color 0.2s;
 }
-.ct-info-wa:hover { color: #25d366; }
+.ct-info-wa:hover { color: #19a24d; }
 
 .ct-wa-icon { flex-shrink: 0; }
 
@@ -278,7 +278,7 @@
 }
 
 /* --- Inputs, Selects, Textarea --- */
-.ct-field input,
+.ct-field input:not([type="checkbox"]):not([type="radio"]),
 .ct-field select,
 .ct-field textarea {
   background: rgba(255,255,255,0.05);
@@ -296,14 +296,14 @@
   appearance: none;
 }
 
-.ct-field input::placeholder,
+.ct-field input:not([type="checkbox"]):not([type="radio"])::placeholder,
 .ct-field textarea::placeholder {
   color: var(--muted, #aab6c5);
   opacity: 0.55;
 }
 
 /* Focus */
-.ct-field input:focus,
+.ct-field input:not([type="checkbox"]):not([type="radio"]):focus,
 .ct-field select:focus,
 .ct-field textarea:focus {
   border-color: var(--accent, #4a9eff);
@@ -311,7 +311,7 @@
   background: rgba(255,255,255,0.07);
 }
 
-.ct-field.invalid input,
+.ct-field.invalid input:not([type="checkbox"]):not([type="radio"]),
 .ct-field.invalid select,
 .ct-field.invalid textarea {
   border-color: #ff6464;
@@ -421,6 +421,19 @@
   font-size: 13px;
   color: var(--muted, #aab6c5);
   opacity: 0.7;
+}
+
+.ct-submit-status {
+  font-size: 13px;
+  color: var(--muted, #aab6c5);
+}
+
+.ct-submit-status.is-success {
+  color: #4ac88c;
+}
+
+.ct-submit-status.is-error {
+  color: #ff8b8b;
 }
 
 /* --- Responsive --- */

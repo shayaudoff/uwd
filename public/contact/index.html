@@ -42,7 +42,7 @@
             <div class="ct-info-block ct-info-primary">
               <span class="ct-info-label">Email</span>
               <span class="ct-info-note">Preferred for all new projects</span>
-              <a href="mailto:info@shayaudoff.com" class="ct-info-email">info@shayaudoff.com</a>
+              <a href="mailto:hello@udoffweb.com" class="ct-info-email">hello@udoffweb.com</a>
             </div>
 
             <div class="ct-divider"></div>
@@ -72,9 +72,8 @@
           <div class="ct-form-wrap ct-reveal">
             <div class="ct-notice">
               <span class="ct-notice-badge">Heads Up</span>
-              <h3 class="ct-notice-title">Email form is not fully functioning yet.</h3>
-              <p class="ct-notice-text">If you have a question, please use the form on Shaya's site for now.</p>
-              <a href="https://shayaudoff.com/contact" target="_blank" rel="noopener" class="btn btn-primary ct-notice-btn">Go to Shaya's site →</a>
+              <h3 class="ct-notice-title">Your message is sent securely.</h3>
+              <p class="ct-notice-text">Submissions from this form are delivered directly to our inbox.</p>
             </div>
 
             <div class="ct-panel ct-panel-success" id="panelSuccess" role="alert" aria-live="assertive">
@@ -108,8 +107,8 @@
 
               <div class="ct-row ct-row-2">
                 <div class="ct-field">
-                  <label for="phone">Phone <span class="ct-req">*</span></label>
-                  <input type="tel" id="phone" name="phone" autocomplete="tel" placeholder="+1 (800) 223-1711" required />
+                  <label for="phone">Phone <span class="ct-opt">optional</span></label>
+                  <input type="tel" id="phone" name="phone" autocomplete="tel" placeholder="+1 (800) 223-1711" />
                   <span class="ct-error" id="err-phone"></span>
                 </div>
                 <div class="ct-field">
@@ -170,7 +169,8 @@
 
               <div class="ct-row ct-row-submit">
                 <button class="btn btn-primary ct-submit" id="submitBtn" type="submit">Send message</button>
-                <span class="ct-form-note">We read every message. No automated replies.</span>
+                <span class="ct-form-note">We read every message and reply as soon as we can.</span>
+                <span class="ct-submit-status" id="contactSubmitStatus" aria-live="polite"></span>
               </div>
             </form>
           </div>
