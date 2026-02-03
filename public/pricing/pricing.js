@@ -21,6 +21,7 @@ let currentStep      = 0;
 let selectedBudget   = '';
 let selectedTimeline = '';
 let selectedStyle    = '';
+let isSubmitting     = false;
 
 // ============================================================
 // DOM READY
@@ -205,7 +206,11 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 
   // ── Submit ──
-  document.getElementById('estimateForm').addEventListener('submit', handleSubmit);
+  const estimateForm = document.getElementById('estimateForm');
+  if (estimateForm && estimateForm.dataset.submitBound !== 'true') {
+    estimateForm.addEventListener('submit', handleSubmit);
+    estimateForm.dataset.submitBound = 'true';
+  }
 
   // ── Retry ──
   document.getElementById('formRetryBtn').addEventListener('click', () => {
@@ -386,53 +391,160 @@ function validateAll() {
 async function handleSubmit(e) {
   e.preventDefault();
 
-  // 1. validate current (last) step only — previous steps were gated
-  if (!validateStep(5)) return;
+  const form = document.getElementById('estimateForm');
+  if (!form) return;
+  if (isSubmitting) return;
+
+  // 1. strict final validation for all required data
+  if (!validateAll()) {
+    setSubmitStatus('Please complete all required fields before sending.', 'error');
+    return;
+  }
+
+  const formData = new FormData(form);
+  const name = (formData.get('fullName') || '').toString().trim();
+  const email = (formData.get('email') || '').toString().trim();
+  const phone = (formData.get('phone') || '').toString().trim();
+  const budget = (formData.get('budget') || '').toString().trim();
+  const timeline = (formData.get('timeline') || '').toString().trim();
+  const description = (formData.get('description') || '').toString().trim();
+  const consentChecked = (document.getElementById('est-consent')?.checked === true) || Boolean(formData.get('consent'));
+  const emailOk = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+
+  if (!selectedTier) { setSubmitStatus('Please select a project type.', 'error'); return; }
+  if (!name) { setSubmitStatus('Please enter your full name.', 'error'); return; }
+  if (!email || !emailOk) { setSubmitStatus('Please enter a valid email address.', 'error'); return; }
+  if (!budget) { setSubmitStatus('Please pick a budget range.', 'error'); return; }
+  if (!timeline) { setSubmitStatus('Please pick a timeline.', 'error'); return; }
+  if (!description) { setSubmitStatus('Please add a project description.', 'error'); return; }
+  if (!consentChecked) { setSubmitStatus('Please accept the estimate acknowledgment.', 'error'); return; }
+
+  if (selectedTier === 'micro') {
+    const microType = (formData.get('microType') || '').toString().trim();
+    const microDesc = (formData.get('microDesc') || '').toString().trim();
+    if (!microType || !microDesc) {
+      setSubmitStatus('Please complete micro service type and task description.', 'error');
+      return;
+    }
+  }
+  if (selectedTier === 'website') {
+    const siteType = (formData.get('siteType') || '').toString().trim();
+    const pages = (formData.get('pages') || '').toString().trim();
+    if (!siteType || !pages) {
+      setSubmitStatus('Please choose website type and number of pages.', 'error');
+      return;
+    }
+  }
+  if (selectedTier === 'platform') {
+    const prodType = (formData.get('prodType') || '').toString().trim();
+    const features = formData.getAll('features').map(v => String(v).trim()).filter(Boolean);
+    if (!prodType || features.length === 0) {
+      setSubmitStatus('Please choose product type and at least one feature.', 'error');
+      return;
+    }
+  }
 
   // 2. honeypot
   if ((document.getElementById('pr_hp')?.value || '').trim() !== '') {
-    showPanel('formSuccess'); return;
+    setSubmitStatus('Request sent ✅', 'success');
+    return;
   }
 
   // 3. time gate
   if ((Date.now() - pageLoadedAt) / 1000 < MIN_FILL_SECONDS) {
-    showPanel('formSuccess'); return;
+    setSubmitStatus('Request sent ✅', 'success');
+    return;
   }
 
   // 4. disable
   const btn = document.getElementById('estimateSubmitBtn');
+  isSubmitting = true;
   btn.disabled = true;
   btn.textContent = 'Sending…';
-  setSubmitStatus('Sending request...', '');
+  setSubmitStatus('Sending…', '');
 
   // 5. send
   try {
-    const form = document.getElementById('estimateForm');
-    const formData = new FormData(form);
-    const payload = Object.fromEntries(formData.entries());
-    payload.tier = selectedTier || payload.tier || '';
-    payload.name = payload.fullName || payload.name || '';
-    payload.details = payload.details || payload.description || payload.message || payload.notes || payload.microDesc || '';
-    payload.budget_range = payload.budget_range || payload.budget || '';
+    const microType = (formData.get('microType') || '').toString().trim();
+    const siteType = (formData.get('siteType') || '').toString().trim();
+    const pages = (formData.get('pages') || '').toString().trim();
+    const cms = (formData.get('cms') || '').toString().trim();
+    const features = formData.getAll('features').map(v => String(v).trim()).filter(Boolean);
 
-    ['features', 'compliance', 'access', 'services'].forEach((key) => {
-      const values = formData.getAll(key).map((value) => String(value).trim()).filter(Boolean);
-      if (values.length === 1) payload[key] = values[0];
-      if (values.length > 1) payload[key] = values;
-    });
-
-    if (!payload.services) {
-      const fallbackServices = [
-        payload.projectType,
-        payload.microType,
-        payload.siteType,
-        payload.prodType,
-        payload.designScope
-      ].filter(Boolean);
-      if (Array.isArray(payload.features)) fallbackServices.push(...payload.features);
-      if (typeof payload.features === 'string') fallbackServices.push(payload.features);
-      if (fallbackServices.length) payload.services = fallbackServices;
+    let services = [];
+    if (selectedTier === 'micro') {
+      services = ['micro', microType].filter(Boolean);
+    } else if (selectedTier === 'website') {
+      services = ['website', siteType, pages, cms].filter(Boolean);
+    } else if (selectedTier === 'platform') {
+      services = features.length ? features : ['platform'];
     }
+
+    const listOrDefault = (items) => items.length ? items.join(', ') : 'Not provided';
+    const checkedValue = (group) => (formData.get(group) || '').toString().trim() || 'Not provided';
+    const checkedList = (group) => formData.getAll(group).map(v => String(v).trim()).filter(Boolean);
+
+    const details = [
+      `Tier: ${selectedTier || 'Not provided'}`,
+      '',
+      `Name: ${name || 'Not provided'}`,
+      `Email: ${email || 'Not provided'}`,
+      `Phone: ${phone || 'Not provided'}`,
+      `Company: ${(formData.get('company') || '').toString().trim() || 'Not provided'}`,
+      `Contact Method: ${checkedValue('contactMethod')}`,
+      '',
+      '[Micro]',
+      `Service Type: ${microType || 'Not provided'}`,
+      `Task Description: ${(formData.get('microDesc') || '').toString().trim() || 'Not provided'}`,
+      `Relevant URL: ${(formData.get('microUrl') || '').toString().trim() || 'Not provided'}`,
+      '',
+      '[Website]',
+      `Website Type: ${siteType || 'Not provided'}`,
+      `Pages: ${pages || 'Not provided'}`,
+      `CMS: ${cms || 'Not provided'}`,
+      `Content Status: ${(formData.get('content') || '').toString().trim() || 'Not provided'}`,
+      `Brand Assets: ${checkedValue('brandAssets')}`,
+      '',
+      '[Platform]',
+      `Product Type: ${(formData.get('prodType') || '').toString().trim() || 'Not provided'}`,
+      `Features: ${listOrDefault(features)}`,
+      `Compliance: ${listOrDefault(checkedList('compliance'))}`,
+      '',
+      '[Design]',
+      `Design Scope: ${checkedValue('designScope')}`,
+      `Style Direction: ${(formData.get('styleDirection') || '').toString().trim() || 'Not provided'}`,
+      `Ref 1: ${(formData.get('ref1') || '').toString().trim() || 'Not provided'}`,
+      `Ref 2: ${(formData.get('ref2') || '').toString().trim() || 'Not provided'}`,
+      `Ref 3: ${(formData.get('ref3') || '').toString().trim() || 'Not provided'}`,
+      `Must Keep: ${(formData.get('mustKeep') || '').toString().trim() || 'Not provided'}`,
+      '',
+      '[Budget & Timeline]',
+      `Budget: ${budget || 'Not provided'}`,
+      `Timeline: ${timeline || 'Not provided'}`,
+      '',
+      '[Technical & Logistics]',
+      `Has Domain: ${checkedValue('hasDomain')}`,
+      `Hosting: ${(formData.get('hosting') || '').toString().trim() || 'Not provided'}`,
+      `Current Site: ${(formData.get('currentSite') || '').toString().trim() || 'Not provided'}`,
+      `Access Readiness: ${listOrDefault(checkedList('access'))}`,
+      `NDA Needed: ${checkedValue('nda')}`,
+      `Source: ${(formData.get('source') || '').toString().trim() || 'Not provided'}`,
+      `Consent: ${consentChecked ? 'Yes' : 'No'}`,
+      '',
+      '[Final Description]',
+      description
+    ].join('\n');
+
+    const payload = {
+      tier: selectedTier,
+      name,
+      email,
+      phone,
+      budget,
+      timeline,
+      services,
+      details
+    };
 
     const response = await fetch('/api/estimate', {
       method: 'POST',
@@ -444,8 +556,7 @@ async function handleSubmit(e) {
       throw new Error(data.error || 'Send failed');
     }
 
-    setSubmitStatus('Estimate request sent.', 'success');
-    showPanel('formSuccess');
+    setSubmitStatus('Request sent ✅', 'success');
     form.reset();
     selectedTier = ''; selectedBudget = ''; selectedTimeline = ''; selectedStyle = '';
     document.querySelectorAll('.pr-starter-card').forEach(c => c.setAttribute('aria-pressed','false'));
@@ -458,8 +569,8 @@ async function handleSubmit(e) {
     goToStep(0, false);
   } catch (_err) {
     setSubmitStatus('Send failed. Please try again.', 'error');
-    showPanel('formError');
   } finally {
+    isSubmitting = false;
     btn.disabled = false;
     btn.textContent = 'Request Estimate';
   }
