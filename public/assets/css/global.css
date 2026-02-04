@@ -226,6 +226,27 @@ img,svg{
   color:var(--text);
 }
 
+.site-footer a[href="/apply/"]{
+  font-weight:700;
+  font-size:12px;
+  letter-spacing:0.5px;
+  text-transform:uppercase;
+  border:1px solid rgba(74,158,255,0.28);
+  border-radius:999px;
+  padding:6px 12px;
+  background:rgba(74,158,255,0.1);
+  color:var(--accent);
+}
+
+.site-footer a[href="/apply/"]:hover{
+  color:var(--accent);
+  background:rgba(74,158,255,0.16);
+}
+
+.site-footer a[href="/apply/"]::after{
+  content:" \2192";
+}
+
 .footer-bottom{
   padding-top:24px;
   border-top:1px solid var(--border);

@@ -1,0 +1,284 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Apply for a Job | Udoff Web Development</title>
+  <meta name="description" content="Apply to work with Udoff Web Development. Share your experience in web systems, UI/UX, deployment workflows, DNS, analytics, and shipped projects.">
+  <script>
+    document.documentElement.classList.add('js');
+  </script>
+  <link rel="stylesheet" href="../assets/css/global.css" />
+  <link rel="stylesheet" href="../assets/css/responsive.css" />
+  <link rel="stylesheet" href="./style.css" />
+</head>
+<body>
+  <header class="site-header">
+    <div class="container">
+      <h1 class="logo"><a href="/">Udoff Web Development</a></h1>
+      <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav">Menu</button>
+      <nav class="nav" id="site-nav">
+        <a href="/services/">Services</a>
+        <a href="/work/">Work</a>
+        <a href="/process/">Process</a>
+        <a href="/about/">About</a>
+        <a href="/pricing/">Pricing</a>
+        <a href="/contact/">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="ap-header">
+      <div class="container">
+        <h2 class="ap-title"><span class="gradient-text">Apply for a Job</span></h2>
+        <p class="ap-subtitle">We are hiring! We're looking for talented individuals to Join us to build production-grade web systems that are fast, reliable, measurable, and built to last.</p>
+      </div>
+    </section>
+
+    <section class="ap-body">
+      <div class="container">
+        <div class="ap-grid">
+          <aside class="ap-info ap-reveal">
+            <h3>What we're looking for</h3>
+            <ul>
+              <li>Strong execution in web systems, deployment pipelines, and hosting workflows.</li>
+              <li>Care for UI/UX details without sacrificing performance or accessibility.</li>
+              <li>Hands-on DNS, domains, SSL, auth, and integration troubleshooting.</li>
+              <li>Comfort with Git/GitHub collaboration and structured delivery.</li>
+              <li>Practical use of APIs, CMS platforms, analytics, and data-backed iteration.</li>
+              <li>Experience with CMS, SaaS, cloud platforms, e-commerce systems (including Shopify).</li>
+              <li>Hands-on experience integrating or developing AI-powered features, including LLM APIs, automation workflows, or data-driven intelligence in production systems.</li>
+
+            </ul>
+          </aside>
+
+          <div class="ap-form-wrap ap-reveal">
+            <div class="ap-notice">
+              <span class="ap-notice-badge">Application Intake</span>
+              <h3 class="ap-notice-title">Your application is sent securely.</h3>
+              <p class="ap-notice-text">We review every submission and follow up with qualified applicants.</p>
+            </div>
+
+            <div class="ap-panel ap-panel-success" id="panelSuccess" role="alert" aria-live="assertive">
+              <div class="ap-panel-icon">✓</div>
+              <h3>Application sent.</h3>
+              <p>Thanks for applying. We received your details and will reach out if there is a fit.</p>
+            </div>
+
+            <div class="ap-panel ap-panel-error" id="panelError" role="alert" aria-live="assertive">
+              <div class="ap-panel-icon">!</div>
+              <h3>Submission failed.</h3>
+              <p>Your application did not go through. Please try again or email us at <a href="mailto:hello@udoffweb.com">hello@udoffweb.com</a>.</p>
+              <button class="btn btn-secondary ap-retry-btn" id="retryBtn" type="button">Try again</button>
+            </div>
+
+            <form class="ap-form" id="applyForm" novalidate>
+              <input type="text" name="hp_field" id="hp_field" autocomplete="off" tabindex="-1" aria-hidden="true" />
+
+              <div class="ap-row ap-row-2">
+                <div class="ap-field">
+                  <label for="fullName">Full Name <span class="ap-req">*</span></label>
+                  <input type="text" id="fullName" name="fullName" autocomplete="name" required />
+                  <span class="ap-error" id="err-fullName"></span>
+                </div>
+                <div class="ap-field">
+                  <label for="email">Email <span class="ap-req">*</span></label>
+                  <input type="email" id="email" name="email" autocomplete="email" required />
+                  <span class="ap-error" id="err-email"></span>
+                </div>
+              </div>
+
+              <div class="ap-row ap-row-2">
+                <div class="ap-field">
+                  <label for="phone">Phone <span class="ap-req">*</span></label>
+                  <input type="tel" id="phone" name="phone" autocomplete="tel" required />
+                  <span class="ap-error" id="err-phone"></span>
+                </div>
+                <div class="ap-field">
+                  <label for="location">Location (City/State) <span class="ap-req">*</span></label>
+                  <input type="text" id="location" name="location" autocomplete="address-level2" required />
+                  <span class="ap-error" id="err-location"></span>
+                </div>
+              </div>
+
+              <div class="ap-row ap-row-3">
+                <div class="ap-field">
+                  <label for="roleInterest">Role Interest <span class="ap-req">*</span></label>
+                  <select id="roleInterest" name="roleInterest" required>
+                    <option value="" selected disabled>Select role</option>
+                    <option value="Frontend">Frontend</option>
+                    <option value="Backend">Backend</option>
+                    <option value="Full-stack">Full-stack</option>
+                    <option value="UI/UX">UI/UX</option>
+                    <option value="DevOps/DNS">DevOps/DNS</option>
+                    <option value="Mobile Development">Mobile Development</option>
+                    <option value="AI Development">AI Development</option>
+                    <option value="Data Science">Data Science</option>
+                    <option value="Other">Other</option>
+
+                  </select>
+                  <span class="ap-error" id="err-roleInterest"></span>
+                </div>
+                <div class="ap-field">
+                  <label for="experienceLevel">Experience Level <span class="ap-req">*</span></label>
+                  <select id="experienceLevel" name="experienceLevel" required>
+                    <option value="" selected disabled>Select level</option>
+                    <option value="Vibe Coder">Vibe Coder</option>
+                    <option value="Intern">Intern</option>
+                    <option value="Student">Student</option>
+                    <option value="Junior">Junior</option>
+                    <option value="Mid">Mid</option>
+                    <option value="Senior">Senior</option>
+                    <option value="Contractor/Freelance">Contractor/Freelance</option>
+                  </select>
+                  <span class="ap-error" id="err-experienceLevel"></span>
+                </div>
+                <div class="ap-field">
+                  <label for="yearsExperience">Years of Experience <span class="ap-req">*</span></label>
+                  <input type="number" id="yearsExperience" name="yearsExperience" min="0" step="0.5" required />
+                  <span class="ap-error" id="err-yearsExperience"></span>
+                </div>
+              </div>
+
+              <div class="ap-row">
+                <div class="ap-field">
+                  <label for="schooling">Schooling (or N/A) <span class="ap-req">*</span></label>
+                  <input type="text" id="schooling" name="schooling" required />
+                  <span class="ap-error" id="err-schooling"></span>
+                </div>
+              </div>
+
+              <div class="ap-row">
+                <div class="ap-field">
+                  <label for="selfTaught">Self-taught / courses <span class="ap-req">*</span></label>
+                  <textarea id="selfTaught" name="selfTaught" rows="4" required></textarea>
+                  <span class="ap-error" id="err-selfTaught"></span>
+                </div>
+              </div>
+
+              <div class="ap-row">
+                <div class="ap-field">
+                  <label for="systemsExperience">Web systems experience <span class="ap-req">*</span></label>
+                  <textarea id="systemsExperience" name="systemsExperience" rows="5" placeholder="Hosting/deployments, DNS, Git/GitHub, APIs, CMS, analytics, auth, databases" required></textarea>
+                  <span class="ap-error" id="err-systemsExperience"></span>
+                </div>
+              </div>
+
+              <div class="ap-row">
+                <div class="ap-field">
+                  <label for="portfolioLinks">Portfolio links (GitHub, website, LinkedIn, etc.) <span class="ap-req">*</span></label>
+                  <textarea id="portfolioLinks" name="portfolioLinks" rows="4" required></textarea>
+                  <span class="ap-error" id="err-portfolioLinks"></span>
+                </div>
+              </div>
+
+              <div class="ap-row">
+                <div class="ap-field">
+                  <label for="biggestProject">Biggest project shipped <span class="ap-req">*</span></label>
+                  <textarea id="biggestProject" name="biggestProject" rows="5" required></textarea>
+                  <span class="ap-error" id="err-biggestProject"></span>
+                </div>
+              </div>
+
+              <div class="ap-row ap-row-2">
+                <div class="ap-field">
+                  <label for="availability">Availability <span class="ap-req">*</span></label>
+                  <select id="availability" name="availability" required>
+                    <option value="" selected disabled>Select availability</option>
+                    <option value="ASAP">ASAP</option>
+                    <option value="2 weeks">2 weeks</option>
+                    <option value="1 month">1 month</option>
+                    <option value="Flexible">Flexible</option>
+                  </select>
+                  <span class="ap-error" id="err-availability"></span>
+                </div>
+
+                <fieldset class="ap-field ap-choice-group" id="employmentTypeGroup">
+                  <legend>Employment type <span class="ap-req">*</span></legend>
+                  <label class="ap-choice"><input type="radio" name="employmentType" value="Full-time" /><span>Full-time</span></label>
+                  <label class="ap-choice"><input type="radio" name="employmentType" value="Part-time" /><span>Part-time</span></label>
+                  <label class="ap-choice"><input type="radio" name="employmentType" value="Contract" /><span>Contract</span></label>
+                  <label class="ap-choice"><input type="radio" name="employmentType" value="By-the-job" /><span>by-the-job</span></label>
+                  <span class="ap-error" id="err-employmentType"></span>
+                </fieldset>
+              </div>
+
+              <div class="ap-row ap-row-2">
+                <fieldset class="ap-field ap-choice-group" id="workTypeGroup">
+                  <legend>Work type <span class="ap-req">*</span></legend>
+                  <label class="ap-choice"><input type="checkbox" name="workType" value="Remote" /><span>Remote</span></label>
+                  <label class="ap-choice"><input type="checkbox" name="workType" value="Hybrid" /><span>Hybrid</span></label>
+                  <label class="ap-choice"><input type="checkbox" name="workType" value="On-site" /><span>On-site</span></label>
+                  <span class="ap-error" id="err-workType"></span>
+                </fieldset>
+
+                <fieldset class="ap-field ap-choice-group" id="consentGroup">
+                  <legend>Confirmation <span class="ap-req">*</span></legend>
+                  <label class="ap-choice"><input type="checkbox" id="consent" name="consent" value="yes" /><span>I confirm this information is accurate.</span></label>
+                  <span class="ap-error" id="err-consent"></span>
+                </fieldset>
+              </div>
+
+              <div class="ap-row ap-row-submit">
+                <button class="btn btn-primary ap-submit" id="submitBtn" type="submit">Submit application</button>
+                <span class="ap-form-note">We only use your submission for hiring decisions.</span>
+                <span class="ap-submit-status" id="applySubmitStatus" aria-live="polite"></span>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-col">
+          <h3>Udoff Web Development</h3>
+          <p>Building the web, one site at a time.</p>
+        </div>
+        <div class="footer-col">
+          <h4>Services</h4>
+          <ul>
+            <li><a href="/services/web-design/">Web Design</a></li>
+            <li><a href="/services/web-development/">Web Development</a></li>
+            <li><a href="/services/seo-performance/">SEO &amp; Performance</a></li>
+            <li><a href="/services/maintenance-support/">Maintenance</a></li>
+            <li><a href="/services/consulting-audits/">Consulting</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Company</h4>
+          <ul>
+            <li><a href="/about/">About</a></li>
+            <li><a href="/work/">Work</a></li>
+            <li><a href="/process/">Process</a></li>
+            <li><a href="/pricing/">Pricing</a></li>
+            <li><a href="/faq/">FAQ</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Legal</h4>
+          <ul>
+            <li><a href="/privacy/">Privacy Policy</a></li>
+            <li><a href="/terms/">Terms of Service</a></li>
+          </ul>
+          <h4 class="footer-heading-spaced">Connect</h4>
+          <ul>
+            <li><a href="/contact/">Contact</a></li>
+            <li><a href="/apply/">Apply for a Job</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2026 Udoff Web Development. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="../assets/js/main.js"></script>
+  <script src="./apply.js"></script>
+</body>
+</html>
