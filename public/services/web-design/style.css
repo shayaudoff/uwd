@@ -9,3 +9,7 @@
   color: var(--muted-text-color, #5f6a7a);
   font-style: italic;
 }
+
+.page-actions {
+  margin-top: 1.25rem;
+}

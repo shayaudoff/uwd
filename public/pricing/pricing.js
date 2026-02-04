@@ -193,10 +193,24 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // ── Step navigation ──
   document.querySelectorAll('.pr-next').forEach(btn => {
-    btn.addEventListener('click', () => {
+    btn.addEventListener('click', (e) => {
+      e.preventDefault();
       const target = parseInt(btn.dataset.target, 10);
       if (validateStep(currentStep)) {
-        goToStep(target);
+        goToStep(target, false);
+
+        const nextStep = document.getElementById('step' + target);
+        if (!nextStep) return;
+
+        const header = nextStep.querySelector('.pr-step-title') || nextStep;
+        const rect = header.getBoundingClientRect();
+        const isVisible = rect.top >= 0 && rect.top <= window.innerHeight;
+        if (isVisible) return;
+
+        const rawTargetY = window.scrollY + rect.top - (window.innerHeight * 0.3);
+        const maxScrollY = Math.max(0, document.documentElement.scrollHeight - window.innerHeight);
+        const targetY = Math.min(Math.max(0, rawTargetY), maxScrollY);
+        window.scrollTo({ top: targetY, behavior: 'smooth' });
       }
     });
   });

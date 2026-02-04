@@ -42,6 +42,21 @@ document.addEventListener('DOMContentLoaded', () => {
   const navToggle = document.querySelector('.nav-toggle');
   const nav = document.querySelector('.nav');
   const header = document.querySelector('.site-header');
+  const navLinks = document.querySelectorAll('.nav a');
+
+  // Keep current-page nav state consistent across the site.
+  if (navLinks.length) {
+    const normalizedPath = window.location.pathname.replace(/\/+$/, '') || '/';
+    navLinks.forEach((link) => {
+      const linkPath = new URL(link.href, window.location.origin).pathname.replace(/\/+$/, '') || '/';
+      const isCurrent = linkPath === normalizedPath;
+      if (isCurrent) {
+        link.setAttribute('aria-current', 'page');
+      } else {
+        link.removeAttribute('aria-current');
+      }
+    });
+  }
 
   if (navToggle && nav && header) {
     const closeNav = () => {

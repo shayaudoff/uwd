@@ -80,6 +80,8 @@ img,svg{
 
 .nav a:hover{color:var(--text)}
 .nav a:hover::after{width:100%}
+.nav a[aria-current="page"]{color:var(--text)}
+.nav a[aria-current="page"]::after{width:100%}
 
 .nav-toggle{
   display:none;
