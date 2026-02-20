@@ -53,7 +53,8 @@
           <br>
          <a href="/pricing/" 
    class="btn btn-primary"
-   onclick="event.preventDefault(); gtag('event','pricing_click',{link_url:this.href,link_text:this.innerText,event_callback:()=>{window.location.href=this.href;}}); setTimeout(()=>{window.location.href=this.href;},800);">
+   data-ga-event="cta_click"
+   data-ga-cta="pricing">
    View Pricing Breakdown
 </a>
         </div>
