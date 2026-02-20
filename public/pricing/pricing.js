@@ -153,8 +153,7 @@ document.addEventListener('DOMContentLoaded', () => {
         card.setAttribute('aria-pressed', 'true');
         setTier(tier);
         goToStep(0, false);
-        const formSection = document.getElementById('estimate-form');
-        if (formSection) formSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        scrollStepIntoView(getCurrentVisibleStepPanel());
       };
 
       card.addEventListener('click', activate);
@@ -195,37 +194,46 @@ document.addEventListener('DOMContentLoaded', () => {
   document.querySelectorAll('.pr-next').forEach(btn => {
     btn.addEventListener('click', (e) => {
       e.preventDefault();
+      e.stopPropagation();
+      const x = window.scrollX;
+      const y = window.scrollY;
       const target = parseInt(btn.dataset.target, 10);
       if (validateStep(currentStep)) {
         goToStep(target, false);
-
-        const nextStep = document.getElementById('step' + target);
-        if (!nextStep) return;
-
-        const header = nextStep.querySelector('.pr-step-title') || nextStep;
-        const rect = header.getBoundingClientRect();
-        const isVisible = rect.top >= 0 && rect.top <= window.innerHeight;
-        if (isVisible) return;
-
-        const rawTargetY = window.scrollY + rect.top - (window.innerHeight * 0.3);
-        const maxScrollY = Math.max(0, document.documentElement.scrollHeight - window.innerHeight);
-        const targetY = Math.min(Math.max(0, rawTargetY), maxScrollY);
-        window.scrollTo({ top: targetY, behavior: 'smooth' });
+        requestAnimationFrame(() => window.scrollTo(x, y));
       }
     });
   });
 
   document.querySelectorAll('.pr-back').forEach(btn => {
-    btn.addEventListener('click', () => goToStep(parseInt(btn.dataset.target, 10)));
+    btn.addEventListener('click', (e) => {
+      e.preventDefault();
+      e.stopPropagation();
+      const x = window.scrollX;
+      const y = window.scrollY;
+      const target = parseInt(btn.dataset.target, 10);
+      goToStep(target, false);
+      requestAnimationFrame(() => window.scrollTo(x, y));
+    });
   });
 
   // ── "Get an Estimate" hero button — scroll + open step 0 ──
-  document.querySelectorAll('a[href="#estimate-form"]').forEach(a => {
+  document.querySelectorAll('a[href="#estimate-form"], a[href="#estimateForm"]').forEach(a => {
     a.addEventListener('click', (e) => {
       e.preventDefault();
-      document.getElementById('estimate-form').scrollIntoView({ behavior: 'smooth' });
+      e.stopPropagation();
+      scrollStepIntoView(getCurrentVisibleStepPanel());
     });
   });
+
+  window.addEventListener('hashchange', () => {
+    if (!isEstimateFormHash(window.location.hash)) return;
+    scrollStepIntoView(getCurrentVisibleStepPanel());
+  });
+
+  if (isEstimateFormHash(window.location.hash)) {
+    requestAnimationFrame(() => scrollStepIntoView(getCurrentVisibleStepPanel()));
+  }
 
   // ── Submit ──
   const estimateForm = document.getElementById('estimateForm');
@@ -261,7 +269,44 @@ function goToStep(n, shouldScroll = true) {
   // render budget presets when landing on step 4
   if (n === 4) renderBudgetPresets();
 
-  if (shouldScroll) targetStep.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  if (shouldScroll) scrollStepIntoView(targetStep);
+}
+
+function isEstimateFormHash(hash) {
+  return hash === '#estimate-form' || hash === '#estimateForm';
+}
+
+function getCurrentVisibleStepPanel() {
+  return document.querySelector('.pr-step-panel:not(.hidden)') || document.getElementById('step' + currentStep);
+}
+
+function getStepScrollTarget(stepEl) {
+  if (!stepEl) return null;
+
+  const fields = stepEl.querySelectorAll('input, select, textarea');
+  for (const field of fields) {
+    if (!field.offsetParent) continue;
+    if (field.disabled) continue;
+    if (field.type === 'hidden') continue;
+    return field;
+  }
+
+  return stepEl.querySelector('.pr-step-title') || stepEl;
+}
+
+function scrollStepIntoView(stepEl) {
+  const target = getStepScrollTarget(stepEl);
+  if (!target) return;
+
+  try {
+    target.scrollIntoView({ behavior: 'smooth', block: 'center' });
+  } catch (_err) {
+    const rect = target.getBoundingClientRect();
+    const rawTargetY = window.scrollY + rect.top - ((window.innerHeight - rect.height) / 2);
+    const maxScrollY = Math.max(0, document.documentElement.scrollHeight - window.innerHeight);
+    const targetY = Math.min(Math.max(0, rawTargetY), maxScrollY);
+    window.scrollTo(0, targetY);
+  }
 }
 
 // ============================================================
