@@ -1,4 +1,58 @@
 // public/js/ga-events.js
+/*
+=============================================================
+UNIVERSAL GA BUTTON TRACKING INSTRUCTIONS
+=============================================================
+
+To track ANY clickable element on ANY page:
+
+1) Add these attributes to the button or link in HTML:
+
+   data-ga-event="cta_click"
+   data-ga-cta="YOUR_LABEL"
+
+Example:
+
+   <a href="/pricing/"
+      class="btn btn-primary"
+      data-ga-event="cta_click"
+      data-ga-cta="pricing">
+      View Pricing Breakdown
+   </a>
+
+2) ONLY change:
+   data-ga-cta="pricing"
+
+   Replace "pricing" with:
+   contact
+   book_call
+   instagram
+   download
+   start_project
+   etc.
+
+3) DO NOT change data-ga-event.
+   Keep it as:
+   cta_click
+
+Analytics Structure:
+Event name: cta_click
+Parameters sent:
+   cta_type   → value from data-ga-cta
+   page_path  → page where click occurred
+   link_url   → destination
+   link_text  → button text
+
+Rules:
+- Use lowercase
+- Use underscores
+- No spaces
+- Be consistent
+
+DO NOT create new event names unless absolutely necessary.
+=============================================================
+*/
+
 (function () {
   function trackAndFollow(e) {
     const el = e.currentTarget;
