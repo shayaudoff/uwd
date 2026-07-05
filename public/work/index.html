@@ -38,14 +38,57 @@
 <main>
     <section class="work-center">
       <div class="container">
-        <div class="work-card">
-          <span class="work-badge">Coming Soon</span>
+        <div class="work-card work-card-intro">
+          <span class="work-badge">Active Projects</span>
           <h1 class="work-title">Work</h1>
-          <p class="work-desc">This page will be filled as more projects are completed.</p>
-          <p class="work-desc">Right now most of our portfolio is tied up in client rollouts, private repos, and NDAs.</p>
-          <p class="work-desc">Give us a little time and this page will have enough projects to make your scroll wheel file a complaint.</p>
-          <p class="work-desc">Our case studies are being polished so hard they now have better Lighthouse scores than our egos.</p>
-          <p class="work-desc">If this page looks quiet, that is because our deployment logs are doing all the talking.</p>
+          <p class="work-desc">We are still building out full case studies, but a few live launches are already out in the wild.</p>
+          <p class="work-desc">More portfolio entries are on the way as client approvals, private builds, and rollout timelines clear.</p>
+        </div>
+
+        <div class="project-grid" aria-label="Featured projects">
+          <article class="project-card">
+            <div class="project-preview">
+              <iframe
+                class="project-frame"
+                src="https://www.shayaudoff.com/home"
+                title="Live preview of shayaudoff.com"
+                loading="lazy"></iframe>
+            </div>
+            <div class="project-meta">
+              <span class="project-status">Live</span>
+              <span class="project-type">Personal Brand</span>
+            </div>
+            <h2 class="project-title">Shaya Udoff</h2>
+            <p class="project-desc">A live project site for Shaya Udoff with a direct embedded homepage preview.</p>
+            <a class="project-link" href="https://www.shayaudoff.com/" target="_blank" rel="noreferrer">Visit shayaudoff.com</a>
+          </article>
+
+          <article class="project-card">
+            <div class="project-preview">
+              <iframe
+                class="project-frame"
+                src="https://jacksjerkynj.com/home/index.html"
+                title="Live preview of jacksjerkynj.com"
+                loading="lazy"></iframe>
+            </div>
+            <div class="project-meta">
+              <span class="project-status">Live</span>
+              <span class="project-type">Gourmet Beef Jerky</span>
+            </div>
+            <h2 class="project-title">Jack's Jerky</h2>
+            <p class="project-desc">A live front-facing site for Jack's Jerky with the homepage embedded directly on this page.</p>
+            <a class="project-link" href="https://jacksjerkynj.com/" target="_blank" rel="noreferrer">Visit jacksjerkynj.com</a>
+          </article>
+
+          <article class="project-card project-card-soon">
+            <div class="project-meta">
+              <span class="project-status project-status-soon">Coming Soon</span>
+              <span class="project-type">Women's Health</span>
+            </div>
+            <h2 class="project-title">Insiyt</h2>
+            <p class="project-desc">This project is in progress and will be added here with a live preview once the front page is ready to share.</p>
+            <span class="project-link project-link-disabled" aria-disabled="true">insiyt.com coming soon</span>
+          </article>
         </div>
       </div>
     </section>
